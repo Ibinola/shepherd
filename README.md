@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+## How to Contribute
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple guide on how to contribute. Please follow these steps:
 
-## Available Scripts
+### 1. Fork the Repository
 
-In the project directory, you can run:
+- Click on the `Fork` button at the top right of this repository page to create a copy of the repository in your GitHub account.
 
-### `npm start`
+ - ![alt text](image-1.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ - ![alt text](image-3.png)
 
-### `npm test`
+### 2. Clone the Forked Repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Clone the repository to your local machine using the following command:
 
-### `npm run build`
+  ```bash
+  git clone https://github.com/YOUR-USERNAME/shephard.git
+  ```
+- YOUR-USERNAME will be your actual GitHub username.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![alt text](image-4.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3. Create a New Branch
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Navigate to the project directory:
 
-### `npm run eject`
+    ```bash
+    cd shephard
+    ```
+- Create a new branch for the task or page you working on:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+- Name your branch based on the changes/task you are assigned on. For example if I'm working on the NavBar section name your branch 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    git checkout -b feature/nav-bar
+    ```
+### 4. Make Your Changes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Add the files you've worked on
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    git add .
+    ```
 
-## Learn More
+- Commit your changes with a clear and descriptive commit message.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```bash
+    git commit -m "Add detailed description of your changes"
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 5. Push Your Changes to GitHub
 
-### Code Splitting
+- Push your branch to your forked repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+    git push origin feature/your-feature-name. 
+    ```
+- For example:   
+    ```bash
+    git push origin feature/nav-bar
+    ```
 
-### Analyzing the Bundle Size
+### 6. Create a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Go to the original repository on GitHub.
+- Click the Compare & pull request button.
+- Provide a clear title and description for your pull request.
+- Submit the pull request for review.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
