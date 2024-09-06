@@ -6,10 +6,10 @@ A simple guide on how to contribute. Please follow these steps:
 
 - Click on the `Fork` button at the top right of this repository page to create a copy of the repository in your GitHub account.
 
- - ![alt text](image-1.png)
+ - ![alt text](/public/readme-images/image-1.png)
 
 
- - ![alt text](image-3.png)
+ - ![alt text](/public/readme-images/image-3.png)
 
 ### 2. Clone the Forked Repository
 
@@ -20,7 +20,7 @@ A simple guide on how to contribute. Please follow these steps:
   ```
 - YOUR-USERNAME will be your actual GitHub username.
 
-![alt text](image-4.png)
+![alt text](/public/readme-images/image-4.png)
 
 ### 3. Create a New Branch
 
