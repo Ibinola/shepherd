@@ -22,7 +22,12 @@ A simple guide on how to contribute. Please follow these steps:
 
 ![alt text](/public/readme-images/image-4.png)
 
-### 3. Create a New Branch
+### 3. Run npm install to install dependencies
+   ```bash
+   npm install
+   ```
+
+### 4. Create a New Branch
 
 - Navigate to the project directory:
 
@@ -39,7 +44,7 @@ A simple guide on how to contribute. Please follow these steps:
     ```bash
     git checkout -b feature/nav-bar
     ```
-### 4. Make Your Changes
+### 5. Make Your Changes
 
 - Add the files you've worked on
 
@@ -53,7 +58,7 @@ A simple guide on how to contribute. Please follow these steps:
     git commit -m "Add detailed description of your changes"
     ```
 
-### 5. Push Your Changes to GitHub
+### 6. Push Your Changes to GitHub
 
 - Push your branch to your forked repository:
 
@@ -65,7 +70,7 @@ A simple guide on how to contribute. Please follow these steps:
     git push origin feature/nav-bar
     ```
 
-### 6. Create a Pull Request
+### 7. Create a Pull Request
 
 - Go to the original repository on GitHub.
 - Click the Compare & pull request button.
