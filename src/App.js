@@ -17,7 +17,6 @@ function App() {
         consequatur eum? Culpa repellendus quisquam voluptatum laborum impedit
         doloribus porro ullam, libero consequuntur nulla ipsum sint!
       </p>
-      <p>test</p>
     </div>
   );
 }
