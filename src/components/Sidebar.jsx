@@ -9,7 +9,7 @@ import { CiSettings } from "react-icons/ci";
 function Sidebar({ isOpen, toggleSidebar }) {
   return (
     <div
-      className={`fixed inset-y-0 left-0 w-52 h-screen bg-white shadow-md transform transition-transform duration-300 lg:static lg:translate-x-0 ${
+      className={`fixed inset-y-0 left-0 w-52 min-h-screen bg-white shadow-md transform transition-transform duration-300 lg:static lg:translate-x-0 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } z-50 lg:z-auto`}
     >
