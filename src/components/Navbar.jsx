@@ -4,7 +4,7 @@ import { IoIosArrowDown, IoMdMenu } from "react-icons/io";
 
 function Navbar({ toggleSidebar }) {
   return (
-    <nav className="h-16 text-neutral-content mb-12 bg-white border-b">
+    <nav className="h-16 text-neutral-content bg-white border-b">
       <div className="container mx-auto flex justify-between items-center h-full px-4">
         <div>
           <button
