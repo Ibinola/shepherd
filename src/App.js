@@ -1,16 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Sidebar from './components/Sidebar';
-import Dashboard from './pages/dashboard/Dashboard';
-import Client from './pages/client/Client';
-import Offers from './pages/offers/Offers';
-import Messages from './pages/messages/Messages';
-import Settings from './pages/settings/Settings';
-import { useState } from 'react';
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Client from "./pages/client/Client";
+import Offers from "./pages/offers/Offers";
+import Messages from "./pages/messages/Messages";
+import Settings from "./pages/settings/Settings";
+import { useState } from "react";
 
 function App() {
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -24,7 +23,7 @@ function App() {
         <div className="flex flex-col flex-1">
           <Navbar toggleSidebar={toggleSidebar} />
           {/* Main content area where the routes will render */}
-          <div className="p-6">
+          <div className="">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/clients" element={<Client />} />
