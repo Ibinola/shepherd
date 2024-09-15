@@ -44,7 +44,7 @@ function Client() {
       ) : (
         <>
           <div className="flex justify-between items-center mb-4 relative">
-            <h1 className="text-2xl font text-[#212224] animate-bounce">
+            <h1 className="text-2xl font text-[#212224] animate-pulse">
               Clients{" "}
               <span className="text-[#6E7682] bg-[#F4F5F6] text-lg font-[500] p-2 rounded ">
                 {filteredData.length}{" "}
