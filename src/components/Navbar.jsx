@@ -31,10 +31,7 @@ const Navbar = ({ toggleSidebar }) => {
         {!hideOnPaths.includes(location.pathname) && (
           <div className="relative max-w-md hidden md:flex">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <react-icon
-                icon={<CiSearch />}
-                className="text-gray-400 focus:text-[#207df7]"
-              />
+              <CiSearch className="text-gray-400 focus:text-[#207df7]" />
             </span>
             <input
               type="text"
