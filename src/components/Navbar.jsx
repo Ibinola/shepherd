@@ -80,7 +80,7 @@ const Navbar = ({ toggleSidebar }) => {
           </div>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
