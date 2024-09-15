@@ -28,6 +28,27 @@
   color: #61dafb;
 }
 
+/* messages section */
+/* In your CSS file */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #4A90E2 #F5F5F5; /* Thumb color and track color */
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #4A90E2; /* Thumb color */
+  border-radius: 6px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background-color: #F5F5F5; /* Track color */
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
