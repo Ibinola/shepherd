@@ -65,15 +65,15 @@ const Messages = () => {
   };
 
   const filteredMessages = messages
-  .filter((message) => 
-    showUnread ? !message.isRead : true // Filter unread if showUnread is true
-  )
-  .filter((message) => 
-    message.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by search term
-  );
+    .filter(
+      (message) => (showUnread ? !message.isRead : true) // Filter unread if showUnread is true
+    )
+    .filter(
+      (message) => message.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by search term
+    );
 
   return (
-    <div className="flex">
+    <div className="flex p-2">
       <div className="w-full md:w-1/3 md:border-r-2 border-[#EEEFF2] pl-2">
         <h2 className="text-xl font-bold pb-2">Messages</h2>
         <SearchIcon handleSearch={setSearchTerm} />
@@ -100,12 +100,17 @@ const Messages = () => {
       <div className="w-3/4 md:flex flex-col hidden">
         {selectedUser ? (
           <>
-            <ChatHeader selectedUser={selectedUser} messages={messages} setFileList={setFileList} setSentMessages={setSentMessages} />
-            <ChatMessages
-              sentMessages={sentMessages}
-              fileList={fileList}
+            <ChatHeader
+              selectedUser={selectedUser}
+              messages={messages}
+              setFileList={setFileList}
+              setSentMessages={setSentMessages}
             />
-            <InputArea onSendMessage={handleSendMessage} onSendFile={handleSendFile} />
+            <ChatMessages sentMessages={sentMessages} fileList={fileList} />
+            <InputArea
+              onSendMessage={handleSendMessage}
+              onSendFile={handleSendFile}
+            />
           </>
         ) : (
           <div className="flex-1 p-4 text-center">
