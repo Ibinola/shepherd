@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+// import { UserContext } from "../context/UserContext";
 
 const MultiStepForm = ({ steps, onSubmit }) => {
   const [currentStep, setCurrentStep] = useState(0);
