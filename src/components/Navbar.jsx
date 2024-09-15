@@ -64,7 +64,7 @@ const Navbar = ({ toggleSidebar }) => {
                 className="focus:outline-0 w-full max-w-xs bg-[#F4F5F5] cursor-pointer font-[500] text-black  hover:bg-gray-200 "
                 onChange={handleSelectChange}
               >
-                <option className="hover:bg-gray-200">Liam Kelly</option>
+                <option className="hover:bg-gray-200">Leslie Kelly</option>
                 <option className="flex items-center justify-center text-black bg-white cursor-pointer hover:bg-gray-200">
                   Settings &#9881;
                 </option>
