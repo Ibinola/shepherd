@@ -9,19 +9,19 @@ import Messages from "./pages/messages/Messages";
 import Settings from "./pages/settings/Settings";
 import { useState } from "react";
 
-function App() {
+const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar open/close
   };
 
   return (
     <Router>
       <div className="flex font-inter">
-        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <div className="flex flex-col flex-1">
-          <Navbar toggleSidebar={toggleSidebar} />
+          <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
           {/* Main content area where the routes will render */}
           <div className="">
             <Routes>
@@ -36,6 +36,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
