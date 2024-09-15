@@ -1,27 +1,26 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import MainLayout from "./components/MainLayout"; // Main layout with Sidebar and Navbar
 import Dashboard from "./pages/dashboard/Dashboard";
 import Client from "./pages/client/Client";
 import Offers from "./pages/offers/Offers";
 import Messages from "./pages/messages/Messages";
 import Settings from "./pages/settings/Settings";
-import { useState } from "react";
+import SignupStepOne from "./pages/signup/SignupStepOne";
+import SignupTutor from "./pages/signup/SignupTutor";
 
-const App = () => {
+function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar open/close
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
     <Router>
       <div className="flex font-inter">
-        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <div className="flex flex-col flex-1">
-          <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+          <Navbar toggleSidebar={toggleSidebar} />
           {/* Main content area where the routes will render */}
           <div className="">
             <Routes>
@@ -36,6 +35,6 @@ const App = () => {
       </div>
     </Router>
   );
-};
+}
 
 export default App;
