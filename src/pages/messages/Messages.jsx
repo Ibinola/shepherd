@@ -16,6 +16,7 @@ const Messages = () => {
     "Big Cedar",
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const [messages, setMessages] = useState(
     users.map((user) => ({
       name: user,
