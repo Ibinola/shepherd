@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 import fileSvg from "../../assets/svgs/file-icon.svg";
 import imgSvg from "../../assets/svgs/img.svg";
 
-const InputArea = ({ onSendMessage, onSendFile }) => { // Add onSendFile prop
+const InputArea = ({ onSendMessage, onSendFile }) => {
+  // Add onSendFile prop
   const [inputMessage, setInputMessage] = useState("");
   const fileInputRef = useRef(null);
 
@@ -34,7 +35,7 @@ const InputArea = ({ onSendMessage, onSendFile }) => { // Add onSendFile prop
         <div className="absolute inset-y-0 right-2 flex items-center space-x-2">
           <img
             src={imgSvg}
-            alt="image"
+            alt="input-area"
             className="cursor-pointer"
             onClick={() => fileInputRef.current.click()} // Trigger file input
           />
@@ -57,7 +58,7 @@ const InputArea = ({ onSendMessage, onSendFile }) => { // Add onSendFile prop
       <input
         type="file"
         ref={fileInputRef}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={handleFileSelect}
       />
     </div>
