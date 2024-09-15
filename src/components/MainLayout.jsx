@@ -1,9 +1,7 @@
-// MainLayout.js
-import  Sidebar from '../components/Sidebar'
-import Navbar from '../components/Navbar'
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-// import { Outlet } from 'react-router-dom';
+import React, { useState } from "react";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,17 +9,17 @@ const MainLayout = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
   return (
-    <div className="flex font-inter">
+    <div className="flex font-inter h-screen">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-      <div className="flex flex-col flex-1">
-
-
+      <div className="flex flex-col flex-1 ml-0 lg:ml-52">
         <Navbar toggleSidebar={toggleSidebar} />
 
-
-        <div className="p-6"><Outlet/></div>
+        <main className="flex-1 overflow-x-hidden overflow-y-auto">
+          <Outlet />
+        </main>
       </div>
     </div>
   );

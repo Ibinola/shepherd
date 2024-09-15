@@ -1,12 +1,19 @@
-// Button.js
 import React from "react";
 
-const Button = ({ label, onClick, type = "button", className = "", ...props }) => {
+const Button = ({
+  label,
+  onClick,
+  type = "button",
+  className = "",
+  ...props
+}) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`w-[201px] md:w-[401px]  mx-auto block py-3 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ${className}`}
+      className={`w-[100px] md:w-[401px] mx-auto block py-3 px-4 rounded-lg transition duration-300 ${
+        className.includes("bg-") ? "" : "bg-blue-500"
+      } ${className.includes("text-") ? "" : "text-white"}  ${className}`}
       {...props}
     >
       {label}
