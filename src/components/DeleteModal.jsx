@@ -1,0 +1,116 @@
+// import React, { useState } from "react";
+// import Blackdelete from "../assets/svgs/Blackdelete.svg";
+
+// const DeleteModal = () => {
+//   const [selectedItems, setSelectedItems] = useState(3);
+//   const [selectAll, setSelectAll] = useState(false);
+
+//   const handleSelectAll = () => {
+//     setSelectAll(!selectAll);
+//   };
+
+//   return (
+//     <div className="bg-[#Fff] border-2 border-[#F7F7F8] py-4 px-6 flex justify-between items-center w-[464px] text-[#6E7682] text-[14px] rounded-xl ">
+//       <div className="flex justify-center items-center">
+//         <span className="text-gray-600">{selectedItems} items selected</span>
+//       </div>
+//       <div className="flex space-x-4">
+//         <button
+//           className={`text-gray-600 hover:text-gray-800 focus:outline-none ${
+//             selectAll ? "font-bold" : ""
+//           }`}
+//           onClick={handleSelectAll}
+//         >
+//           Select all
+//         </button>
+//         <button className="text-gray-600 hover:text-gray-800 focus:outline-none">
+//           <span className="flex items-center gap-1 text-[#585F68] border-2 p-1 rounded-md bg-[#F4F5F5]">
+//             <img src={Blackdelete} alt="" /> Delete
+//           </span>
+//         </button>
+//         <button className="text-gray-600 hover:text-gray-800 focus:outline-none border-2 rounded-md border-[#E7E8E9] bg-white p-[2px] w-[79px]">
+//           Done
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default DeleteModal;
+
+import React, { useEffect, useState } from "react";
+import Blackdelete from "../assets/svgs/Blackdelete.svg";
+import Calender from "../assets/svgs/Calendar.svg";
+import Delete from "../assets/svgs/Delete.svg";
+
+function DeleteModal({ showDeleteModal, setShowDeleteModal }) {
+  const [isVisible, setIsVisible] = useState(showDeleteModal);
+  const [selectedItems, setSelectedItems] = useState(3);
+  const [selectAll, setSelectAll] = useState(false);
+
+  useEffect(() => {
+    if (showDeleteModal) {
+      setIsVisible(true);
+    } else {
+      const timer = setTimeout(() => setIsVisible(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [showDeleteModal]);
+
+  if (!isVisible) return null;
+
+  const handleSelectAll = () => {
+    setSelectAll(!selectAll);
+  };
+
+  return (
+    <div className="fixed inset-0 z-30 flex items-center justify-center transition-all duration-300 ease-in-out">
+      <div
+        className={`fixed inset-0 bg-black transition-opacity duration-300 ease-in-out ${
+          showDeleteModal ? "opacity-50" : "opacity-0"
+        }`}
+        onClick={() => setShowDeleteModal(false)}
+      ></div>
+
+      <div className="bg-white max-h-full z-30 p-6 rounded-lg shadow-lg relative w-[422px]  transition-all duration-300 ease-in-out fade-in-out">
+        <button
+          className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          <img src={Calender} alt="Close delete modal" />
+        </button>
+
+        <div className="text-center border-b p-3">
+          <h3 className="text-lg leading-6 text-[#212224] font-[500] text-[14px]">
+            Are you sure you want to delete?
+          </h3>
+        </div>
+
+        <div className="flex text-center justify-center items-center w-[365px] mt-2 max-w-md mx-auto p-4 text-[#212224] font-[400]">
+          This action cannot be undone. Once you delete this item, it will be
+          permanently removed.
+        </div>
+
+        <div className="flex justify-center mt-4">
+          <button
+            className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
+            onClick={() => {
+              // Perform delete action
+              setShowDeleteModal(false);
+            }}
+          >
+            Delete
+          </button>
+          <button
+            className="ml-4 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400"
+            onClick={() => setShowDeleteModal(false)}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default DeleteModal;
