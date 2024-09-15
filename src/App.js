@@ -5,29 +5,27 @@ import Client from "./pages/client/Client";
 import Offers from "./pages/offers/Offers";
 import Messages from "./pages/messages/Messages";
 import Settings from "./pages/settings/Settings";
-import SignupStepOne from "./pages/signup/SignupStepOne";
-import SignupTutor from "./pages/signup/SignupTutor";
+import SignUp from "./pages/signup/SignUp";
+// import { UserContextProvider } from "./context/UserContext";
 
 function App() {
   return (
+    // <UserContextProvider>
     <Router>
       <Routes>
-        {/* Routes without Sidebar and Navbar */}
-        <Route path="/" element={<SignupStepOne />} />
-        <Route path="/tutor" element={<SignupTutor />} />
+        <Route path='/' element={<SignUp />} />
 
-        {/* Routes with Sidebar and Navbar */}
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="clients" element={<Client />} />
-          <Route path="offers" element={<Offers />} />
-          <Route path="messages" element={<Messages />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="/clients" element={<Client />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
       </Routes>
     </Router>
+    // </UserContextProvider>
   );
 }
 
 export default App;
-
