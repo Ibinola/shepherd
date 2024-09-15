@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import MessageList from "../../components/messageComponent/MessageList";
 import ChatHeader from "../../components/messageComponent/ChatHeader";
 import ChatMessages from "../../components/messageComponent/ChatMessages";
@@ -16,6 +16,7 @@ const Messages = () => {
     "Big Cedar",
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const [messages, setMessages] = useState(
     users.map((user) => ({
       name: user,
