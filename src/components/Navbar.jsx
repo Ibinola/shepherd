@@ -1,8 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { CiSearch } from "react-icons/ci";
 import Notification from "../assets/svgs/Notification.svg";
 import { useNavigate, useLocation } from "react-router-dom";
-import { IoMdMenu, IoMdClose } from "react-icons/io";
+import { IoMdMenu } from "react-icons/io";
 
 const Navbar = ({ toggleSidebar }) => {
   const location = useLocation();
@@ -32,8 +31,8 @@ const Navbar = ({ toggleSidebar }) => {
         {!hideOnPaths.includes(location.pathname) && (
           <div className="relative max-w-md hidden md:flex">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <FontAwesomeIcon
-                icon={faSearch}
+              <react-icon
+                icon={<CiSearch />}
                 className="text-gray-400 focus:text-[#207df7]"
               />
             </span>
