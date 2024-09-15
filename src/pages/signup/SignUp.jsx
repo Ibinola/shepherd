@@ -3,7 +3,7 @@ import RoleSelection from "./RoleSelection";
 import PersonalDetails from "./PersonalDetails";
 import IdentificationVerification from "./IdentificationVerification";
 import Password from "./Password";
-import Frame from "../../assets/images/Frame 10251.png";
+import signup from "../../assets/images/signup-bg-image.png";
 import logo from "../../assets/svgs/shepherd.svg";
 import { Link } from "react-router-dom";
 import React from "react";
@@ -32,7 +32,7 @@ const SignUp = () => {
         <div className="font-[600] text-[42px]">
           <h1 className="px-8 py-8">
             Hi there, <span className="text-[#207DF7]">Welcome!</span>
-            <img src={Frame} alt="sign-up" />
+            <img src={signup} alt="sign-up" />
           </h1>
         </div>
       </div>
