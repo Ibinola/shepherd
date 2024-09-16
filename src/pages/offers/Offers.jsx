@@ -166,7 +166,7 @@ const Offers = () => {
   };
 
   return (
-    <div className="offers-page p-6">
+    <div className="offers-page p-5">
       {selectedOffer ? (
         // If an offer is selected, show the details view
         <CardDetails selectedOffer={selectedOffer} onBack={handleBackClick} />
