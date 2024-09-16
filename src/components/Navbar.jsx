@@ -56,6 +56,6 @@ function Navbar({ toggleSidebar }) {
       </div>
     </header>
   );
-};
+}
 
 export default Navbar;

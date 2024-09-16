@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ClientTabs from "../../components/ClientTabs";
-import { data } from "../../components/clientdata/data.js";
+import { client_data } from "../../utils/client_data";
 import Sort from "../../assets/svgs/Sort.svg";
 import MyDesign from "../../components/MyDesign";
 
 function Client() {
   const [showSortOptions, setShowSortOptions] = useState(false);
   const [showMyDesign, setShowMyDesign] = useState(true);
-  const [sortedData, setSortedData] = useState(data);
-  const [filteredData, setFilteredData] = useState(data);
+  const [sortedData, setSortedData] = useState(client_data);
+  const [filteredData, setFilteredData] = useState(client_data);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
   useEffect(() => {
