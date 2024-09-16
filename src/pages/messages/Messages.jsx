@@ -74,7 +74,7 @@ const Messages = () => {
     );
 
   return (
-    <div className="flex p-2">
+    <div className="flex p-5">
       <div className="w-full md:w-1/3 md:border-r-2 border-[#EEEFF2] pl-2">
         <h2 className="text-xl font-bold pb-2">Messages</h2>
         <SearchIcon handleSearch={setSearchTerm} />

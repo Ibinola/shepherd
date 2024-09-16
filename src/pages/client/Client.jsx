@@ -41,7 +41,7 @@ function Client() {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto p-5">
       {showMyDesign ? (
         <div className="transition-opacity duration-500 ease-in-out opacity-100">
           <MyDesign />

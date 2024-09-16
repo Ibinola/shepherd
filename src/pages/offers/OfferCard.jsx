@@ -1,15 +1,15 @@
 import React from "react";
 import file from "../../assets/svgs/offersfile.svg";
-import avatar from "../../assets/Images/Ellipse.png";
+import avatar from "../../assets/svgs/avatar.svg";
 import pen from "../../assets/svgs/pen.svg";
-import star from "../../assets/svgs/star.svg";
+import star from "../../assets/svgs/Star.svg";
 import glitters from "../../assets/svgs/glittrts.svg";
 
 const OfferCard = ({ offer, onClick }) => {
   return (
     <div
       onClick={() => onClick(offer)} // When clicked, pass the offer to the parent
-      className="offer-card bg-white shadow-custom p-4 rounded-lg flex flex-col justify-between cursor-pointer"
+      className="offer-card border bg-white shadow-lg p-4 rounded-lg flex flex-col justify-between cursor-pointer"
     >
       <div className="flex justify-between">
         <div className="w-[42px] h-[42px] rounded-[50%] bg-[#F7F7F8] flex justify-center items-center">
@@ -44,7 +44,9 @@ const OfferCard = ({ offer, onClick }) => {
 
       <div className="offer-header flex items-center justify-between">
         <div className="offer-subject mt-2 flex gap-4">
-          <h4 className="text-[16px] font-[500] leading-[21px] text-[#212224]">{offer.subject}</h4>
+          <h4 className="text-[16px] font-[500] leading-[21px] text-[#212224]">
+            {offer.subject}
+          </h4>
           <span className="w-[73px] p-[2px] bg-[#FFF2EB] text-center rounded-[.25rem] text-[12px] text-orange-500">
             {offer.level}
           </span>
@@ -56,18 +58,25 @@ const OfferCard = ({ offer, onClick }) => {
       </div>
 
       <div className="text-[#6E7682] text-[14px] leading-[20px] flex mt-2">
-        <p>{offer.frequency}</p>.<p>{offer.startTime}  &rarr; {offer.endTime} </p>
+        <p>{offer.frequency}</p>.
+        <p>
+          {offer.startTime} &rarr; {offer.endTime}{" "}
+        </p>
       </div>
       <hr className="mt-4 bg-[#EEEFF2]" />
 
       <div className="offer-footer flex items-center gap-2 mt-4">
         <img src={avatar} alt={offer.teacher} />
-        <span className="text-[#585F68] text-[14px] font-[500]">{offer.teacher}</span>
+        <span className="text-[#585F68] text-[14px] font-[500]">
+          {offer.teacher}
+        </span>
       </div>
 
       <div className="offer-timer mt-2">
         {offer.timeLeft && (
-          <span className="text-red-500 flex justify-end">{offer.timeLeft}</span>
+          <span className="text-red-500 flex justify-end">
+            {offer.timeLeft}
+          </span>
         )}
       </div>
     </div>
