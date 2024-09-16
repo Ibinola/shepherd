@@ -1,3 +1,4 @@
+import React from "react";
 import MultiStepForm from "../../components/MultiStepForm";
 import RoleSelection from "./RoleSelection";
 import PersonalDetails from "./PersonalDetails";
@@ -6,8 +7,6 @@ import Password from "./Password";
 import signup from "../../assets/images/signup-bg-image.png";
 import logo from "../../assets/svgs/shepherd.svg";
 import { Link } from "react-router-dom";
-import React from "react";
-// import { UserContext } from "../../context/UserContext";
 
 const SignUp = () => {
   const steps = [
@@ -17,39 +16,35 @@ const SignUp = () => {
     { component: Password },
   ];
 
-  // const { setUser } = React.useContext(UserContext);
-
-  // console.log(user, "from user");
   const handleSubmit = (formData) => {
-    // setUser(formData);
     console.log("Form submitted:", formData);
   };
 
   return (
-    <div className="flex justify-center font-inter">
-      {/* Image Section */}
-      <div className="hidden w-[548px] rounded-lg md:block bg-[#f8f8f8] py-16">
-        <div className="font-[600] text-[42px]">
-          <h1 className="px-8 py-8">
-            Hi there, <span className="text-[#207DF7]">Welcome!</span>
-            <img src={signup} alt="sign-up" />
-          </h1>
+    <div className="flex justify-center items-center min-h-screen bg-[#f8f8f8] px-4">
+      <div className="flex flex-col md:flex-row w-full max-w-7xl mx-auto items-center">
+        {/* Image Section */}
+        <div className="hidden md:block w-1/2 bg-white rounded-lg py-16 px-12">
+          <div className="font-semibold text-4xl">
+            <h1 className="px-8 py-8">
+              Hi there, <span className="text-[#207DF7]">Welcome!</span>
+              <img src={signup} alt="sign-up" className="mt-4" />
+            </h1>
+          </div>
         </div>
-      </div>
 
-      {/* Form Section */}
-      <div className="w-[648px] font-inter flex flex-col items-center py-20">
-        <div className="mb-12">
-          <img src={logo} alt="logo" />
-        </div>
-        <MultiStepForm steps={steps} onSubmit={handleSubmit} />
-        <div className="mt-4">
-          <p className="text-gray-600 font-[500] text-[12px] leading-[20px] pt-2">
+        {/* Form Section */}
+        <div className="w-full md:w-1/2 flex flex-col items-center py-12 px-4 md:px-12">
+          <div className="mb-12">
+            <img src={logo} alt="logo" className="w-32" />
+          </div>
+          <MultiStepForm steps={steps} onSubmit={handleSubmit} />
+          <div className="mt-4 text-gray-600 text-sm leading-6 text-center">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-500 hover:underline">
               Log in
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </div>

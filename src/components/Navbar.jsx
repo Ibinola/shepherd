@@ -19,7 +19,7 @@ function Navbar({ toggleSidebar }) {
       <div className="flex items-center space-x-4">
         <button
           onClick={toggleSidebar}
-          className="lg:hidden p-2 focus:outline-none"
+          className="lg:hidden p-2 focus:outline-none "
         >
           <IoMdMenu className="h-6 w-6" />
         </button>
@@ -28,14 +28,14 @@ function Navbar({ toggleSidebar }) {
           <input
             type="text"
             placeholder="Search Clients"
-            className="hidden sm:block border rounded-md px-4 py-2 w-48 md:w-64 lg:w-80"
+            className="hidden sm:block border rounded-md px-4 py-2 w-48 md:w-64 lg:w-80 focus:border-[#207df7] focus:outline-0"
           />
         )}
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 ">
         {isClientsPage && (
-          <button className="hidden sm:block bg-blue-600 text-sm text-white px-5 py-2 rounded-lg">
+          <button className="hidden sm:block bg-[#207DF7]  hover:bg-blue-600 text-sm text-white px-5 py-2 rounded-lg">
             + Create New
           </button>
         )}
@@ -46,7 +46,7 @@ function Navbar({ toggleSidebar }) {
           className="h-6 w-6 mr-6 cursor-pointer"
         />
 
-        <div className="relative">
+        <div className="relative ">
           <ProfileDropdown
             isOpen={isDropdownOpen}
             toggleDropdown={toggleDropdown}

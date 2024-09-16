@@ -1,14 +1,15 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from "react";
+import DeleteModal from "../../components/DeleteModal";
+import LogoutModal from "../../components/LogoutModal";
 
-// Initial state for reducer
 const initialState = {
   isEditing: {
     email: false,
     password: false,
   },
   accountInfo: {
-    email: 'lesliepeters123@gmail.com',
-    password: '************',
+    email: "lesliepeters123@gmail.com",
+    password: "************",
   },
   showModal: {
     logout: false,
@@ -19,7 +20,7 @@ const initialState = {
 // Reducer function to handle state transitions
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'TOGGLE_EDIT':
+    case "TOGGLE_EDIT":
       return {
         ...state,
         isEditing: {
@@ -27,7 +28,7 @@ const reducer = (state, action) => {
           [action.field]: !state.isEditing[action.field],
         },
       };
-    case 'UPDATE_ACCOUNT_INFO':
+    case "UPDATE_ACCOUNT_INFO":
       return {
         ...state,
         accountInfo: {
@@ -35,7 +36,7 @@ const reducer = (state, action) => {
           [action.field]: action.value,
         },
       };
-    case 'TOGGLE_MODAL':
+    case "TOGGLE_MODAL":
       return {
         ...state,
         showModal: {
@@ -43,8 +44,6 @@ const reducer = (state, action) => {
           [action.modal]: !state.showModal[action.modal],
         },
       };
-    case 'RESET_ACCOUNT':
-      return initialState; // Reset state on account deletion
     default:
       return state;
   }
@@ -53,11 +52,12 @@ const reducer = (state, action) => {
 const Security = () => {
   // Use reducer to manage state
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   // Handlers for different actions
   const handleChange = (e) => {
     dispatch({
-      type: 'UPDATE_ACCOUNT_INFO',
+      type: "UPDATE_ACCOUNT_INFO",
       field: e.target.name,
       value: e.target.value,
     });
@@ -65,42 +65,38 @@ const Security = () => {
 
   const toggleEdit = (field) => {
     dispatch({
-      type: 'TOGGLE_EDIT',
+      type: "TOGGLE_EDIT",
       field,
     });
   };
 
   const toggleModal = (modal) => {
     dispatch({
-      type: 'TOGGLE_MODAL',
+      type: "TOGGLE_MODAL",
       modal,
     });
   };
 
   const handleLogoutConfirm = () => {
-    // Logic for logging out of all devices
-    console.log('Logged out of all devices');
-    toggleModal('logout');
+    // Perform logout action
+    console.log("Logged out from all devices");
+    toggleModal("logout");
   };
 
   const handleDeleteAccountConfirm = () => {
-    // Logic for deleting the account
-    console.log('Account deleted');
-    toggleModal('deleteAccount');
-    // Redirect to login page
-    window.location.href = '/login';
+    // Perform delete account action
+    console.log("Account deleted");
+    setShowDeleteModal(false);
   };
 
   return (
-    <div>
-      {/* <h2 className="text-2xl font-bold mb-6">Account settings</h2> */}
-
+    <div className="transition-all duration-500 ease-in-out">
       {/* Account Security Section */}
-      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+      <div className="bg-white shadow-md rounded-lg p-6 mb-6 transition-transform transform hover:scale-105 duration-300">
         <h3 className="text-lg font-semibold mb-4">Account Security</h3>
 
         {/* Email Row */}
-        <div className="flex justify-between items-center py-4 border-b border-gray-200">
+        <div className="flex justify-between items-center py-4 border-b border-gray-200 transition-colors duration-300 hover:bg-gray-100">
           <div>
             <p className="text-gray-600">Email</p>
             {state.isEditing.email ? (
@@ -109,22 +105,22 @@ const Security = () => {
                 name="email"
                 value={state.accountInfo.email}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-2 py-1 text-sm"
+                className="border border-gray-300 rounded px-2 py-1 text-sm focus:border-[#207df7] focus:outline-none transition-all duration-300"
               />
             ) : (
               <p className="text-sm">{state.accountInfo.email}</p>
             )}
           </div>
           <button
-            className="text-sm text-blue-500"
-            onClick={() => toggleEdit('email')}
+            className="text-sm text-[#207df7] hover:text-blue-600 transition-all duration-300"
+            onClick={() => toggleEdit("email")}
           >
-            {state.isEditing.email ? 'Save' : 'Change'}
+            {state.isEditing.email ? "Save" : "Change"}
           </button>
         </div>
 
         {/* Password Row */}
-        <div className="flex justify-between items-center py-4 border-b border-gray-200">
+        <div className="flex justify-between items-center py-4 border-b border-gray-200 transition-colors duration-300 hover:bg-gray-100">
           <div>
             <p className="text-gray-600">Password</p>
             {state.isEditing.password ? (
@@ -133,131 +129,92 @@ const Security = () => {
                 name="password"
                 value={state.accountInfo.password}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-2 py-1 text-sm"
+                className="border border-gray-300 rounded px-2 py-1 text-sm focus:border-[#207df7] focus:outline-none transition-all duration-300"
               />
             ) : (
               <p className="text-sm">{state.accountInfo.password}</p>
             )}
           </div>
           <button
-            className="text-sm text-blue-500"
-            onClick={() => toggleEdit('password')}
+            className="text-sm text-[#207df7] hover:text-blue-600 transition-all duration-300"
+            onClick={() => toggleEdit("password")}
           >
-            {state.isEditing.password ? 'Save' : 'Change'}
+            {state.isEditing.password ? "Save" : "Change"}
           </button>
         </div>
 
         {/* Logout All Devices */}
         <div className="py-4">
           <button
-            className="text-sm text-red-500 font-medium"
-            onClick={() => toggleModal('logout')}
+            className="text-sm text-red-500 font-medium hover:underline transition-transform transform hover:scale-105 duration-300"
+            onClick={() => toggleModal("logout")}
           >
             Log out of all devices
           </button>
           <p className="text-xs text-gray-500">
-            Log out of all other active sessions on other devices besides this one.
+            Log out of all other active sessions on other devices besides this
+            one.
           </p>
         </div>
       </div>
 
       {/* Support Section */}
-      <div className="bg-white shadow-md rounded-lg p-6">
+      <div className="bg-white shadow-md rounded-lg p-6 transition-transform transform hover:scale-105 duration-300">
         <h3 className="text-lg font-semibold mb-4">Support</h3>
 
         {/* Terms and Conditions Row */}
-        <div className="flex justify-between items-center py-4 border-b border-gray-200">
+        <div className="flex justify-between items-center py-4 border-b border-gray-200 transition-colors duration-300 hover:bg-gray-100">
           <div>
             <p className="text-gray-600">Terms and conditions</p>
             <p className="text-sm">Read Shepherd's terms & conditions</p>
           </div>
-          <button className="text-sm text-blue-500">&gt;</button>
+          <button className="text-sm text-[#207df7] hover:text-blue-600 transition-all duration-300 hover:scale-105">
+            &#8250;
+          </button>
         </div>
 
         {/* Contact Support Row */}
-        <div className="flex justify-between items-center py-4 border-b border-gray-200">
+        <div className="flex justify-between items-center py-4 border-b border-gray-200 transition-colors duration-300 hover:bg-gray-100">
           <div>
             <p className="text-gray-600">Contact support</p>
-            <p className="text-sm">Need help? Kindly reach out to our support team via mail</p>
+            <p className="text-sm">
+              Need help? Kindly reach out to our support team via mail
+            </p>
           </div>
-          <button className="text-sm text-blue-500">&gt;</button>
+          <button className="text-sm text-[#207df7] hover:text-blue-600 transition-all duration-300 hover:scale-105">
+            &#8250;
+          </button>
         </div>
 
         {/* Delete Account */}
         <div className="py-4">
           <button
-            className="text-sm text-red-500 font-medium"
-            onClick={() => toggleModal('deleteAccount')}
+            className="text-sm text-red-500 font-medium hover:underline transition-transform transform hover:scale-105 duration-300"
+            onClick={() => setShowDeleteModal(true)}
           >
             Delete my account
           </button>
-          <p className="text-xs text-gray-500">Permanently delete your Shepherd account</p>
+          <p className="text-xs text-gray-500">
+            Permanently delete your Shepherd account
+          </p>
         </div>
+
+        {/* Logout Confirmation Modal */}
+        {state.showModal.logout && (
+          <LogoutModal
+            showLogoutModal={state.showModal.logout}
+            setShowLogoutModal={() => toggleModal("logout")}
+          />
+        )}
+
+        {/* Delete Account Confirmation Modal */}
+        {showDeleteModal && (
+          <DeleteModal
+            showDeleteModal={showDeleteModal}
+            setShowDeleteModal={setShowDeleteModal}
+          />
+        )}
       </div>
-
-      {/* Logout Confirmation Modal */}
-      {state.showModal.logout && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white rounded-lg shadow-lg p-6 relative w-96">
-            <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-              onClick={() => toggleModal('logout')}
-            >
-              &times;
-            </button>
-            <div className="flex flex-col items-center justify-center h-full">
-              <span className="text-4xl mb-4">🚪</span>
-              <p className="mb-4 text-center">Are you sure you want to log out of all devices?</p>
-              <div className="flex justify-end space-x-2">
-                <button
-                  className="bg-gray-300 px-4 py-2 rounded"
-                  onClick={() => toggleModal('logout')}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="bg-red-500 text-white px-4 py-2 rounded"
-                  onClick={handleLogoutConfirm}
-                >
-                  Log out
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Delete Account Confirmation Modal */}
-      {state.showModal.deleteAccount && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white rounded-lg shadow-lg p-6 relative w-96">
-            <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
-              onClick={() => toggleModal('deleteAccount')}
-            >
-              &times;
-            </button>
-            <div className="flex flex-col items-center justify-center h-full">
-              <span className="text-4xl mb-4">🗑️</span>
-              <p className="mb-4 text-center">Are you sure you want to delete your account?</p>
-              <div className="flex justify-end space-x-2">
-                <button
-                  className="bg-gray-300 px-4 py-2 rounded"
-                  onClick={() => toggleModal('deleteAccount')}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="bg-red-500 text-white px-4 py-2 rounded"
-                  onClick={handleDeleteAccountConfirm}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

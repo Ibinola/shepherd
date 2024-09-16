@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Payment = () => {
   // State to manage edit mode
   const [isEditing, setIsEditing] = useState({
     accountName: false,
     accountNumber: false,
-    bankName: false
+    bankName: false,
   });
 
   // State to manage payment information
   const [paymentInfo, setPaymentInfo] = useState({
-    accountName: 'lateefkolade98@gmail.com',
-    accountNumber: '0214582140',
-    bankName: 'Bank of America'
+    accountName: "lateefkolade98@gmail.com",
+    accountNumber: "0214582140",
+    bankName: "Bank of America",
   });
 
   // Handle change in input fields
   const handleChange = (e) => {
     setPaymentInfo({
       ...paymentInfo,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -27,7 +27,7 @@ const Payment = () => {
   const toggleEdit = (field) => {
     setIsEditing((prevState) => ({
       ...prevState,
-      [field]: !prevState[field]
+      [field]: !prevState[field],
     }));
   };
 
@@ -49,7 +49,7 @@ const Payment = () => {
                 name="accountName"
                 value={paymentInfo.accountName}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-2 py-1 text-sm"
+                className="border border-gray-300 rounded px-2 py-1 text-sm focus:border-[#207df7] focus:outline-0"
               />
             ) : (
               <p className="text-sm">{paymentInfo.accountName}</p>
@@ -57,9 +57,9 @@ const Payment = () => {
           </div>
           <button
             className="text-sm text-blue-500"
-            onClick={() => toggleEdit('accountName')}
+            onClick={() => toggleEdit("accountName")}
           >
-            {isEditing.accountName ? 'Save' : 'Change'}
+            {isEditing.accountName ? "Save" : "Change"}
           </button>
         </div>
 
@@ -73,7 +73,7 @@ const Payment = () => {
                 name="accountNumber"
                 value={paymentInfo.accountNumber}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-2 py-1 text-sm"
+                className="border border-gray-300 rounded px-2 py-1 text-sm focus:border-[#207df7] focus:outline-0"
               />
             ) : (
               <p className="text-sm">{paymentInfo.accountNumber}</p>
@@ -81,9 +81,9 @@ const Payment = () => {
           </div>
           <button
             className="text-sm text-blue-500"
-            onClick={() => toggleEdit('accountNumber')}
+            onClick={() => toggleEdit("accountNumber")}
           >
-            {isEditing.accountNumber ? 'Save' : 'Change'}
+            {isEditing.accountNumber ? "Save" : "Change"}
           </button>
         </div>
 
@@ -97,7 +97,7 @@ const Payment = () => {
                 name="bankName"
                 value={paymentInfo.bankName}
                 onChange={handleChange}
-                className="border border-gray-300 rounded px-2 py-1 text-sm"
+                className="border border-gray-300 rounded px-2 py-1 text-sm focus:border-[#207df7] focus:outline-0"
               />
             ) : (
               <p className="text-sm">{paymentInfo.bankName}</p>
@@ -105,9 +105,9 @@ const Payment = () => {
           </div>
           <button
             className="text-sm text-blue-500"
-            onClick={() => toggleEdit('bankName')}
+            onClick={() => toggleEdit("bankName")}
           >
-            {isEditing.bankName ? 'Save' : 'Change'}
+            {isEditing.bankName ? "Save" : "Change"}
           </button>
         </div>
       </div>
@@ -122,16 +122,22 @@ const Payment = () => {
             <p className="text-gray-600">Terms and conditions</p>
             <p className="text-sm">Read Shepherd's terms & conditions</p>
           </div>
-          <button className="text-sm text-blue-500">&gt;</button>
+          <button className="text-sm text-blue-500 hover:animate-pulse">
+            &#8250;
+          </button>
         </div>
 
         {/* Contact Support Row */}
         <div className="flex justify-between items-center py-4">
           <div>
             <p className="text-gray-600">Contact support</p>
-            <p className="text-sm">Need help? Kindly reach out to our support team via mail</p>
+            <p className="text-sm">
+              Need help? Kindly reach out to our support team via mail
+            </p>
           </div>
-          <button className="text-sm text-blue-500">&gt;</button>
+          <button className="text-sm text-blue-500 hover:animate-pulse">
+            &#8250;
+          </button>
         </div>
       </div>
     </div>
