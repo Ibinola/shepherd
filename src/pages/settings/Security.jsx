@@ -44,6 +44,22 @@ const reducer = (state, action) => {
           [action.modal]: !state.showModal[action.modal],
         },
       };
+    case "SHOW_MODAL":
+      return {
+        ...state,
+        showModal: {
+          ...state.showModal,
+          [action.modal]: true,
+        },
+      };
+    case "HIDE_MODAL":
+      return {
+        ...state,
+        showModal: {
+          ...state.showModal,
+          [action.modal]: false,
+        },
+      };
     default:
       return state;
   }
@@ -52,7 +68,6 @@ const reducer = (state, action) => {
 const Security = () => {
   // Use reducer to manage state
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   // Handlers for different actions
   const handleChange = (e) => {
@@ -70,27 +85,42 @@ const Security = () => {
     });
   };
 
-  const toggleModal = (modal) => {
+  const showModal = (modal) => {
     dispatch({
-      type: "TOGGLE_MODAL",
+      type: "SHOW_MODAL",
       modal,
     });
+  };
+
+  const hideModal = (modal) => {
+    dispatch({
+      type: "HIDE_MODAL",
+      modal,
+    });
+  };
+
+  const handleLogout = () => {
+    showModal("logout");
+  };
+
+  const handleDeleteAccount = () => {
+    showModal("deleteAccount");
   };
 
   const handleLogoutConfirm = () => {
     // Perform logout action
     console.log("Logged out from all devices");
-    toggleModal("logout");
+    hideModal("logout");
   };
 
   const handleDeleteAccountConfirm = () => {
     // Perform delete account action
     console.log("Account deleted");
-    setShowDeleteModal(false);
+    hideModal("deleteAccount");
   };
 
   return (
-    <div className="transition-all duration-500 ease-in-out">
+    <div className="transition-opacity duration-500 ease-in-out">
       {/* Account Security Section */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-6 transition-transform transform hover:scale-105 duration-300">
         <h3 className="text-lg font-semibold mb-4">Account Security</h3>
@@ -147,7 +177,7 @@ const Security = () => {
         <div className="py-4">
           <button
             className="text-sm text-red-500 font-medium hover:underline transition-transform transform hover:scale-105 duration-300"
-            onClick={() => toggleModal("logout")}
+            onClick={handleLogout}
           >
             Log out of all devices
           </button>
@@ -190,7 +220,7 @@ const Security = () => {
         <div className="py-4">
           <button
             className="text-sm text-red-500 font-medium hover:underline transition-transform transform hover:scale-105 duration-300"
-            onClick={() => setShowDeleteModal(true)}
+            onClick={handleDeleteAccount}
           >
             Delete my account
           </button>
@@ -203,15 +233,15 @@ const Security = () => {
         {state.showModal.logout && (
           <LogoutModal
             showLogoutModal={state.showModal.logout}
-            setShowLogoutModal={() => toggleModal("logout")}
+            setShowLogoutModal={() => hideModal("logout")}
           />
         )}
 
         {/* Delete Account Confirmation Modal */}
-        {showDeleteModal && (
+        {state.showModal.deleteAccount && (
           <DeleteModal
-            showDeleteModal={showDeleteModal}
-            setShowDeleteModal={setShowDeleteModal}
+            showDeleteModal={state.showModal.deleteAccount}
+            setShowDeleteModal={() => hideModal("deleteAccount")}
           />
         )}
       </div>
