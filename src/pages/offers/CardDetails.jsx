@@ -49,7 +49,7 @@ const CardDetails = ({ selectedOffer, onBack }) => {
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start lg:space-x-6">
       <div
-        className={`w-full lg:w-[700px] p-4 lg:p-10 bg-white ${shadowCustom} rounded-lg`}
+        className={`w-full lg:w-[700px] p-4 lg:p-5 bg-white ${shadowCustom} rounded-lg`}
       >
         {/* Header */}
         <div className="flex justify-between">
