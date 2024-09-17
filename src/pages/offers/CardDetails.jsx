@@ -54,13 +54,10 @@ const CardDetails = ({ selectedOffer, onBack }) => {
         {/* Header */}
         <div className="flex justify-between">
           <p className={`${textMuted}`}>
-            Offers &#62; <span className={textPrimary}>Review Offers</span>
+            Offers &#10095; <span className={textPrimary}>Review Offers</span>
           </p>
-          <button
-            onClick={onBack}
-            className={`mb-4 ${textXs} text-blue-500 underline`}
-          >
-            &larr; Back to Offers
+          <button onClick={onBack} className={`mb-4 ${textXs} text-blue-500`}>
+            &#10094; Back to Offers
           </button>
         </div>
 
@@ -109,7 +106,7 @@ const CardDetails = ({ selectedOffer, onBack }) => {
         </div>
 
         {/* Payment Details */}
-        <div className={`w-full lg:w-[600px] p-4 lg:p-6 ${borderCard}`}>
+        <div className={`w-full lg:w-[645px] p-4 lg:p-6 ${borderCard}`}>
           <h3 className="text-lg font-bold">Payment Details</h3>
           <div className="mb-2">
             <span className={textMuted}>Hourly rate:</span>
@@ -130,7 +127,7 @@ const CardDetails = ({ selectedOffer, onBack }) => {
               You’ll be paid after each session
             </span>
           </div>
-          <div className="w-full lg:w-[517px] bg-[#EFF4FA] p-4 mt-2 rounded-[12px] text-[12px]">
+          <div className="w-full lg:w-[600px]  bg-[#EFF4FA] p-2 mt-4 rounded-[12px] text-[12px]">
             <img src={info} alt="info" className="inline-block mr-2" />
             <p className={`${textGray} mt-4`}>
               Initial payment will not be made until after the client reviews
@@ -143,18 +140,28 @@ const CardDetails = ({ selectedOffer, onBack }) => {
 
       {/* Right Section - Accept/Decline Offer */}
       <div
-        className={`w-full lg:w-[370px] h-[305px] mt-10 lg:mt-20 ${borderCard} p-6`}
+        className={`w-full lg:w-[370px] h-[305px] mt-10 lg:mt-20 ${borderCard} p-6 transition-all duration-500 ease-in-out transform hover:scale-105`}
       >
-        <div className="flex justify-center items-center rounded-full mx-auto w-[60px] lg:w-[80px] h-[60px] lg:h-[80px] bg-[#F7F7F8]">
-          <img src={file} alt="file" />
+        <div className="flex justify-center items-center rounded-full mx-auto w-[60px] lg:w-[80px] h-[60px] lg:h-[70px] bg-[#F7F7F8] transition-colors duration-300">
+          <img
+            src={file}
+            alt="file"
+            className="transition-transform duration-300 ease-in-out transform hover:rotate-6"
+          />
         </div>
-        <h3 className={`${textGray} ${textSm} text-center py-6 lg:py-10`}>
+        <h3
+          className={`${textGray} ${textSm} text-center py-6 lg:py-10 transition-opacity duration-500 ease-in-out`}
+        >
           Respond to the offer before it expires
         </h3>
-        <button className={`w-full lg:w-[310px] py-2 mb-4 ${btnPrimary}`}>
+        <button
+          className={`w-full lg:w-[310px] py-2 mb-4 ${btnPrimary} transition-transform duration-300 ease-in-out hover:scale-105 hover:bg-blue-600`}
+        >
           Accept Offer
         </button>
-        <button className={`w-full lg:w-[310px] py-2 ${btnDanger}`}>
+        <button
+          className={`w-full lg:w-[310px] py-2 ${btnDanger} transition-transform duration-300 ease-in-out hover:scale-105 hover:bg-red-200 hover:text-white`}
+        >
           Decline Offer
         </button>
       </div>

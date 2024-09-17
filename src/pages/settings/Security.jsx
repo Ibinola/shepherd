@@ -121,6 +121,18 @@ const Security = () => {
 
   return (
     <div className="transition-opacity duration-500 ease-in-out">
+      {state.showModal.logout && (
+        <LogoutModal
+          showLogoutModal={state.showModal.logout}
+          setShowLogoutModal={() => hideModal("logout")}
+        />
+      )}
+      {state.showModal.deleteAccount && (
+        <DeleteModal
+          showDeleteModal={state.showModal.deleteAccount}
+          setShowDeleteModal={() => hideModal("deleteAccount")}
+        />
+      )}
       {/* Account Security Section */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-6 transition-transform transform hover:scale-105 duration-300">
         <h3 className="text-lg font-semibold mb-4">Account Security</h3>
@@ -228,22 +240,6 @@ const Security = () => {
             Permanently delete your Shepherd account
           </p>
         </div>
-
-        {/* Logout Confirmation Modal */}
-        {state.showModal.logout && (
-          <LogoutModal
-            showLogoutModal={state.showModal.logout}
-            setShowLogoutModal={() => hideModal("logout")}
-          />
-        )}
-
-        {/* Delete Account Confirmation Modal */}
-        {state.showModal.deleteAccount && (
-          <DeleteModal
-            showDeleteModal={state.showModal.deleteAccount}
-            setShowDeleteModal={() => hideModal("deleteAccount")}
-          />
-        )}
       </div>
     </div>
   );
