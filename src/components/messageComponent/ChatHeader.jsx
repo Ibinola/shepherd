@@ -1,7 +1,12 @@
 import React from "react";
 import ViewProfileMenu from "./ViewProfileMenu";
 
-const ChatHeader = ({ selectedUser, messages, setFileList, setSentMessages }) => {
+const ChatHeader = ({
+  selectedUser,
+  messages,
+  setFileList,
+  setSentMessages,
+}) => {
   // handling File Click
   const handleFileClick = () => {
     if (selectedUser) {
@@ -25,7 +30,7 @@ const ChatHeader = ({ selectedUser, messages, setFileList, setSentMessages }) =>
   };
 
   return (
-    <div className="py-[18px] px-[14px] border-b flex items-center justify-between bg-white">
+    <div className="py-[18px] px-[5px] md:px-[14px] border-b flex items-center justify-between bg-white">
       <div className="flex items-center space-x-2">
         <div className="px-4 py-2 bg-[#4CAF50] rounded-full text-white">
           {selectedUser.initials}
@@ -34,14 +39,13 @@ const ChatHeader = ({ selectedUser, messages, setFileList, setSentMessages }) =>
           <h3 className="font-semibold">{selectedUser.name}</h3>
           <p className="text-sm text-gray-500">Email not available</p>
         </div>
-
       </div>
-        {/*ViewProfileMenu */}
-        <ViewProfileMenu
-          handleFileClick={handleFileClick}
-          handleDeleteChat={handleDeleteChat}
-          userName={selectedUser.name}
-        />
+      {/*ViewProfileMenu */}
+      <ViewProfileMenu
+        handleFileClick={handleFileClick}
+        handleDeleteChat={handleDeleteChat}
+        userName={selectedUser.name}
+      />
     </div>
   );
 };
