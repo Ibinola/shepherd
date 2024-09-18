@@ -13,7 +13,7 @@ const OfferList = ({ offers, onCardClick }) => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.5, delay: 0.1 * offer.id }} // Add a slight delay for each card
+            transition={{ duration: 0.5, delay: 0.1 * offer.id }} 
           >
             <OfferCard offer={offer} onClick={onCardClick} />
           </motion.div>

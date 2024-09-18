@@ -29,7 +29,7 @@ const ClientTabs = ({ data, setFilteredData }) => {
         {tabs.map((tab) => (
           <button
             key={tab}
-            className={`px-4 py-2 text-gray-700 hover:text-blue-500 focus:outline-none transition-colors duration-300 ${
+            className={`px-4 py-2 text-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:text-blue-500 focus:outline-none ${
               activeTab === tab
                 ? "text-blue-500 border-b-2 border-blue-500"
                 : ""
@@ -44,7 +44,7 @@ const ClientTabs = ({ data, setFilteredData }) => {
       {/* Content with fade transition */}
       <div
         key={fadeKey} // Use fadeKey to force re-render
-        className={`transition-opacity duration-100 ease-in-out ${
+        className={`transition-opacity duration-300 ease-in-out ${
           isFading ? "opacity-0" : "opacity-100"
         }`}
       >

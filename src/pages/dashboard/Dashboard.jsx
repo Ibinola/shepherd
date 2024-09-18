@@ -162,7 +162,9 @@ function Dashboard() {
 
             {/* Placeholder for no more classes */}
             <div className="gap-4 flex items-center flex-col text-gray-400 text-xs">
-              <img src={no_schedule} alt="no schedule" />
+              <span className="animate-pulse">
+                <img src={no_schedule} alt="no schedule" />
+              </span>
               No classes scheduled for tomorrow
             </div>
           </div>

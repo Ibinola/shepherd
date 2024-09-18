@@ -52,7 +52,7 @@ function Client() {
             {/* Page Heading */}
             <h1 className="text-2xl font-semibold text-[#212224] ">
               Clients{" "}
-              <span className="text-[#6E7682] bg-[#F4F5F6] text-lg font-[500] p-2 rounded animate-pulse">
+              <span className="text-[#6E7682] bg-[#F4F5F6]  font-[500] text-[14px] ">
                 {filteredData.length} {/* Display filtered data count */}
               </span>
             </h1>

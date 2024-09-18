@@ -1,6 +1,6 @@
 export const client_data = [
   {
-    clientName: "John Smith",
+    clientName: "Mendy Bahago",
     subject: "Mathematics",
     startDate: "2023-05-12",
     endDate: "2024-02-18",
@@ -10,7 +10,7 @@ export const client_data = [
     rating: 4.5,
   },
   {
-    clientName: "Jane Johnson",
+    clientName: "Benard Simon",
     subject: "Science",
     startDate: "2023-03-20",
     endDate: "2023-11-11",
@@ -200,7 +200,7 @@ export const client_data = [
     rating: 4.1,
   },
   {
-    clientName: "John Smith",
+    clientName: "Mendy Bahago",
     subject: "Mathematics",
     startDate: "2023-05-12",
     endDate: "2024-02-18",
@@ -210,7 +210,7 @@ export const client_data = [
     rating: 4.5,
   },
   {
-    clientName: "Jane Johnson",
+    clientName: "Benard Simon",
     subject: "Science",
     startDate: "2023-03-20",
     endDate: "2023-11-11",
@@ -300,7 +300,7 @@ export const client_data = [
     rating: 4.3,
   },
   {
-    clientName: "John Smith",
+    clientName: "Mendy Bahago",
     subject: "Mathematics",
     startDate: "2023-05-12",
     endDate: "2024-02-18",
@@ -310,7 +310,7 @@ export const client_data = [
     rating: 4.5,
   },
   {
-    clientName: "Jane Johnson",
+    clientName: "Benard Simon",
     subject: "Science",
     startDate: "2023-03-20",
     endDate: "2023-11-11",
