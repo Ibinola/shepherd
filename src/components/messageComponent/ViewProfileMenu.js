@@ -50,7 +50,11 @@ const ViewProfileMenu = ({ handleFileClick, handleDeleteChat, userName }) => {
 
   return (
     <div className="relative flex gap-4">
-      <button className="py-[5px] px-4 text-[Text/300] bg-[#E7E8E9] rounded-[6px] hover:bg-gray-200 border-2 border-[#E7E8E9]">
+      <button
+        className="py-[5px] px-4 text-gray-700 bg-[#E7E8E9] rounded-[6px] border-2 border-[#E7E8E9] 
+                   transition-transform transform hover:scale-105 hover:bg-gray-100 hover:border-gray-300
+                   focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+      >
         View Profile
       </button>
       <svg

@@ -3,7 +3,7 @@ import tutorIcon from "../../assets/svgs/tutor.svg";
 import studentIcon from "../../assets/svgs/student.svg";
 import OnboardingHeader from "../../components/Onboarding";
 
-const RoleSelection = ({ formData, handleChange }) => {
+const RoleSelection = ({ formData, handleChange, onNext, isNextDisabled }) => {
   return (
     <div className="text-center">
       <OnboardingHeader text="Hi there, before you proceed, How do you plan to use Shepherd?" />
@@ -14,7 +14,7 @@ const RoleSelection = ({ formData, handleChange }) => {
           name="selectedRole"
           selectedValue={formData.selectedRole}
           onChange={handleChange}
-          icon={studentIcon}
+          icon={tutorIcon} // Assuming this icon should be for tutor
         />
         <RadioButton
           label="Enroll as a student and unlock limitless learning"
@@ -22,9 +22,10 @@ const RoleSelection = ({ formData, handleChange }) => {
           name="selectedRole"
           selectedValue={formData.selectedRole}
           onChange={handleChange}
-          icon={tutorIcon}
+          icon={studentIcon} // Assuming this icon should be for student
         />
       </div>
+      <button onClick={onNext} disabled={isNextDisabled}></button>
     </div>
   );
 };

@@ -106,3 +106,45 @@
 .animate-float {
   animation: animate-float 2s ease-in-out infinite;
 } */
+/* Hover effect for message list items */
+.message-item {
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.message-item:hover {
+  background-color: #f8f9fd;
+  transform: scale(1.05);
+}
+
+/* Message list */
+
+/* Hover effect for message list items */
+.message-item {
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.message-item:hover {
+  background-color: #f8f9fd;
+  transform: scale(1.05);
+}
+
+/* Transition for left and right div */
+.left-div {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animation for message items */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-item {
+  animation: fadeIn 0.5s ease-in-out;
+}

@@ -74,20 +74,36 @@ const Messages = () => {
     );
 
   return (
-    <div className="flex p-5">
-      <div className="w-full md:w-1/3 md:border-r-2 border-[#EEEFF2] pl-2">
-        <h2 className="text-xl font-bold pb-2">Messages</h2>
+    <div
+      className="flex p-4"
+      style={{
+        position: "sticky",
+        top: "0",
+        display: "block",
+        boxSizing: "border-box",
+        height: "100vh",
+      }}
+    >
+      <div
+        className="left-div w-full md:w-1/3 md:border-r-2 border-[#EEEFF2] pl-2 fixed"
+        style={{
+          height: "fit-content",
+          width: "600px",
+          float: "left",
+        }}
+      >
+        <h2 className="text-xl font-bold pb-2 mb-2">Messages</h2>
         <SearchIcon handleSearch={setSearchTerm} />
-        <div className="w-full text-[#969CA6] rounded-lg overflow-hidden flex mt-4">
+        <div className="w-full text-[#969CA6] rounded-lg overflow-hidden flex mt-5 ">
           <button
             onClick={handleShowAll}
-            className="w-1/2 px-6 py-3 text-sm font-semibold hover:bg-[#F8F9FD]"
+            className="w-1/2 px-6 py-3 text-sm font-semibold transform hover:scale-100 focus:scale-95 hover:bg-[#F8F9FD] focus:bg-blue-200 active:bg-blue-300 transition-colors duration-300 ease-in-out"
           >
             All
           </button>
           <button
             onClick={handleShowUnread}
-            className="w-1/2 px-6 py-3 text-sm font-semibold hover:bg-[#F8F9FD]"
+            className="w-1/2 px-6 py-3 text-sm font-semibold  transform hover:scale-100 focus:scale-95 hover:bg-[#F8F9FD] focus:bg-blue-200 active:bg-blue-300 transition-colors duration-300 ease-in-out"
           >
             Unread
           </button>
@@ -98,7 +114,14 @@ const Messages = () => {
         />
       </div>
 
-      <div className="w-3/4 md:flex flex-col hidden">
+      <div
+        className="right-div w-3/4 md:flex flex-col hidden"
+        style={{
+          float: "right",
+          width: "calc(100% - 600px)",
+          height: "100vh",
+        }}
+      >
         {selectedUser ? (
           <>
             <ChatHeader
@@ -108,13 +131,14 @@ const Messages = () => {
               setSentMessages={setSentMessages}
             />
             <ChatMessages sentMessages={sentMessages} fileList={fileList} />
+
             <InputArea
               onSendMessage={handleSendMessage}
               onSendFile={handleSendFile}
             />
           </>
         ) : (
-          <div className="flex-1 p-4 text-center">
+          <div className="flex-1 p-4 text-center transition-opacity duration-500 transform opacity-0 scale-95 animate-fadeInScale">
             <p className="text-gray-500 text-[12px]">
               Select a message to start chatting
             </p>

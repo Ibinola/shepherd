@@ -13,7 +13,7 @@ function App() {
     // <UserContextProvider>
     <Router>
       <Routes>
-        <Route path='/' element={<SignUp />} />
+        <Route path="/" element={<SignUp />} />
 
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
