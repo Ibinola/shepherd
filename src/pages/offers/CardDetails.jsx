@@ -4,11 +4,13 @@ import avatar from "../../assets/svgs/avatar.svg";
 import info from "../../assets/svgs/info.svg";
 import file from "../../assets/svgs/cardDetails-file.svg";
 import celebrate from "../../assets/svgs/celeb.svg";
+import Calendar from "../../assets/svgs/Calendar.svg";
 
 const CardDetails = ({ selectedOffer, onBack }) => {
   const [modalType, setModalType] = useState(null); // To track which modal to open (accept/decline)
   const [note, setNote] = useState(""); // To capture the optional note
   const [showModal, setShowModal] = useState(false); // Controls modal visibility
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const openModal = (type) => {
     setModalType(type);
@@ -19,7 +21,6 @@ const CardDetails = ({ selectedOffer, onBack }) => {
     setShowModal(false);
     setNote(""); // Reset the note when modal closes
   };
-  const navigate = useNavigate();
 
   if (!selectedOffer) return null;
 
@@ -186,15 +187,15 @@ const CardDetails = ({ selectedOffer, onBack }) => {
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[400px]">
             <div className="flex justify-end">
-              <button
+              <span
                 onClick={closeModal}
-                className={`${textMuted} w-[5rem] bg-[#F3F5F6] rounded-[2.5rem] p-2 font-[400]`}
+                className={`${textMuted} cursor-pointer`}
               >
-                Close &times;
-              </button>
+                <img src={Calendar} alt="" />
+              </span>
             </div>
-            <div className="flex justify-between items-center mb-4">
-              <h3 className=" font-[700] mt-4 text-[1.5rem] block mx-auto leading-[1.3125rem]">
+            <div className="flex justify-between items-center">
+              <h3 className=" font-[600] mt-2 text-[1.5rem] block mx-auto leading-[1.3125rem]">
                 {modalType === "accept" ? "Offer Accepted" : "Decline Offer"}
               </h3>
             </div>
@@ -202,9 +203,9 @@ const CardDetails = ({ selectedOffer, onBack }) => {
             {modalType === "decline" ? (
               <>
                 {/* Decline Modal Content */}
-                <p className="text-gray-600 mb-2">Add a note (Optional)</p>
+                <p className="text-gray-600 mb-2 mt-4">Add a note (Optional)</p>
                 <textarea
-                  className="w-full h-[100px] p-2 border border-gray-300 rounded-md"
+                  className="w-full h-[100px] p-2 border border-gray-300 rounded-md hover:border-blue-500 focus:outline-none"
                   placeholder="Let the client know what your terms are"
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
@@ -214,7 +215,7 @@ const CardDetails = ({ selectedOffer, onBack }) => {
                   <button
                     onClick={() => {
                       console.log("Note added:", note);
-                      navigate("/dashboard");
+                      navigate("/dashboard"); // Navigate to dashboard after declining
                       closeModal();
                     }}
                     className="bg-[#F53535] text-white px-4 py-2 rounded-md"
@@ -237,6 +238,7 @@ const CardDetails = ({ selectedOffer, onBack }) => {
                 <div className="flex justify-end mt-6">
                   <button
                     onClick={() => {
+                      navigate("/messages"); // Navigate to messages after accepting
                       closeModal();
                     }}
                     className={`${btnPrimary} ${textSm} text-white px-4 py-2 rounded-md`}

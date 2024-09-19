@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import alertSvg from "../../assets/svgs/dangerAlertIcon.svg";
+import Calender from "../../assets/svgs/Calendar.svg";
 
 const MessageConfirmDelete = ({ isOpen, onClose, onConfirm, userName }) => {
-  if (!isOpen) return null; // Don't render if modal is not open
+  const [isVisible, setIsVisible] = useState(isOpen);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsVisible(true);
+    } else {
+      const timer = setTimeout(() => setIsVisible(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
+  if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 w-96 relative">
+    <div className="fixed inset-0 z-30 flex items-center justify-center transition-all duration-300 ease-in-out">
+      <div
+        className={`fixed inset-0 bg-black transition-opacity duration-300 ease-in-out ${
+          isOpen ? "opacity-50" : "opacity-0"
+        }`}
+        onClick={onClose}
+      ></div>
+
+      <div className="bg-white rounded-lg shadow-lg p-6 w-96 relative z-30 transition-all duration-300 ease-in-out fade-in-out">
         {/* Close Button */}
-        <button
+        <span
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+          className="absolute top-4 right-4 cursor-pointer"
         >
-          Close x
-        </button>
+          <img src={Calender} alt="" />
+        </span>
 
         {/* Alert Icon */}
         <div className="flex justify-center mb-4">
@@ -36,7 +55,7 @@ const MessageConfirmDelete = ({ isOpen, onClose, onConfirm, userName }) => {
             Cancel
           </button>
           <button
-            onClick={onConfirm} // Corrected to match the prop name in ViewProfileMenu
+            onClick={onConfirm}
             className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded w-1/2 ml-2"
           >
             Delete
