@@ -1,11 +1,20 @@
 import React from "react";
-import offersFile from "../../assets/svgs/offersfile.svg"
+import offersFile from "../../assets/svgs/offersfile.svg";
 import avatar from "../../assets/svgs/avatar.svg";
 import pen from "../../assets/svgs/pen.svg";
 import star from "../../assets/svgs/Star.svg";
 import glitters from "../../assets/svgs/glittrts.svg";
 
-const OfferCard = ({ offer, onClick, file, borderCard, textGray, textSm, btnPrimary, btnDanger }) => {
+const OfferCard = ({
+  offer,
+  onClick,
+  file,
+  borderCard,
+  textGray,
+  textSm,
+  btnPrimary,
+  btnDanger,
+}) => {
   return (
     <div
       onClick={() => onClick(offer)} // When clicked, pass the offer to the parent
@@ -13,7 +22,7 @@ const OfferCard = ({ offer, onClick, file, borderCard, textGray, textSm, btnPrim
     >
       <div className="flex justify-between">
         <div className="w-[42px] h-[42px] rounded-[50%] bg-[#F7F7F8] flex justify-center items-center">
-         <img src={offersFile} alt="file" />
+          <img src={offersFile} alt="file" />
         </div>
         <div className="flex gap-4 ">
           {offer.updated && (
@@ -42,7 +51,7 @@ const OfferCard = ({ offer, onClick, file, borderCard, textGray, textSm, btnPrim
         </div>
       </div>
 
-      <div className="offer-header flex items-center justify-between">
+      <div className="offer-header flex items-center justify-between ">
         <div className="offer-subject mt-2 flex gap-4">
           <h4 className="text-[16px] font-[500] leading-[21px] text-[#212224]">
             {offer.subject}
@@ -52,12 +61,12 @@ const OfferCard = ({ offer, onClick, file, borderCard, textGray, textSm, btnPrim
           </span>
         </div>
 
-        <div className="rate text-[24px] p-2 leading-[18px] font-[500]">
-          <span className="rate font-bold">${offer.rate}/hr</span>
+        <div className="p-2 leading-[18px] font-[500]">
+          <span className="font-bold text-[24px]">${offer.rate}/hr</span>
         </div>
       </div>
 
-      <div className="text-[#6E7682] text-[14px] leading-[20px] flex mt-2">
+      <div className="text-[#6E7682] text-[14px] sm:text-[12px] leading-[20px] flex mt-2">
         <p>{offer.frequency}</p>.
         <p>
           {offer.startTime} &rarr; {offer.endTime}
@@ -65,19 +74,21 @@ const OfferCard = ({ offer, onClick, file, borderCard, textGray, textSm, btnPrim
       </div>
       <hr className="mt-4 bg-[#EEEFF2]" />
 
-      <div className="offer-footer flex items-center gap-2 mt-4">
-        <img src={avatar} alt={offer.teacher} />
-        <span className="text-[#585F68] text-[14px] font-[500]">
-          {offer.teacher}
-        </span>
-      </div>
-
-      <div className="offer-timer">
-        {offer.timeLeft && (
-          <span className="text-red-500 flex justify-end">
-            {offer.timeLeft}
+      <div className="flex justify-between items-center">
+        <div className="offer-footer flex items-center gap-2 mt-4">
+          <img src={avatar} alt={offer.teacher} />
+          <span className="text-[#585F68] text-[14px] font-[500]">
+            {offer.teacher}
           </span>
-        )}
+        </div>
+
+        <div className="offer-timer">
+          {offer.timeLeft && (
+            <span className="text-red-500 flex justify-end">
+              {offer.timeLeft}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
