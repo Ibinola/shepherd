@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Blackdelete from "../assets/svgs/Blackdelete.svg";
 import Calender from "../assets/svgs/Calendar.svg";
-import Delete from "../assets/svgs/Delete.svg";
 
 function DeleteModal({ showDeleteModal, setShowDeleteModal }) {
   const [isVisible, setIsVisible] = useState(showDeleteModal);
-  const [selectedItems, setSelectedItems] = useState(3);
-  const [selectAll, setSelectAll] = useState(false);
 
   useEffect(() => {
     if (showDeleteModal) {
@@ -18,10 +14,6 @@ function DeleteModal({ showDeleteModal, setShowDeleteModal }) {
   }, [showDeleteModal]);
 
   if (!isVisible) return null;
-
-  const handleSelectAll = () => {
-    setSelectAll(!selectAll);
-  };
 
   return (
     <div className="fixed inset-0 z-30 flex items-center justify-center transition-all duration-300 ease-in-out">

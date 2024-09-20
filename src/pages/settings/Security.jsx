@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer } from "react";
 import DeleteModal from "../../components/DeleteModal";
 import LogoutModal from "../../components/LogoutModal";
 
@@ -107,17 +107,17 @@ const Security = () => {
     showModal("deleteAccount");
   };
 
-  const handleLogoutConfirm = () => {
-    // Perform logout action
-    console.log("Logged out from all devices");
-    hideModal("logout");
-  };
+  // const handleLogoutConfirm = () => {
+  //   // Perform logout action
+  //   console.log("Logged out from all devices");
+  //   hideModal("logout");
+  // };
 
-  const handleDeleteAccountConfirm = () => {
-    // Perform delete account action
-    console.log("Account deleted");
-    hideModal("deleteAccount");
-  };
+  // const handleDeleteAccountConfirm = () => {
+  //   // Perform delete account action
+  //   console.log("Account deleted");
+  //   hideModal("deleteAccount");
+  // };
 
   return (
     <div className="transition-opacity duration-500 ease-in-out">
