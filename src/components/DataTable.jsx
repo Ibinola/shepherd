@@ -54,8 +54,8 @@ const DataTable = ({ data = [], handleSort, searchQuery = "" }) => {
   }, [searchQuery]);
 
   return (
-    <div className="overflow-x-auto mt-6">
-      <table className="min-w-full bg-white border border-[] border-l-0 border-r-0 text-[#6E7682] font-[400] ">
+    <div className="overflow-x-auto mt-6 w-full">
+      <table className="min-w-[700px] w-full  text-[#6E7682] font-[400] ">
         <thead>
           <tr className="whitespace-nowrap text-left bg-[#F7F8FA]  mt-4">
             <th className="py-2 px-4 border-b">Select</th>
