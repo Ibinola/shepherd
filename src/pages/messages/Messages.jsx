@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoMdArrowBack } from "react-icons/io";
+import { motion } from "framer-motion";
 import MessageList from "../../components/messageComponent/MessageList";
 import ChatHeader from "../../components/messageComponent/ChatHeader";
 import ChatMessages from "../../components/messageComponent/ChatMessages";
@@ -17,18 +18,16 @@ const Messages = () => {
     "Big Cedar",
   ];
 
-  // Helper function to generate initials
   const getInitial = (name) => {
     const nameParts = name.split(" ");
-    const initial = nameParts[0][0]; // Get the first letter of the first name
+    const initial = nameParts[0][0];
     return initial.toUpperCase();
-  };  
+  };
 
-  // eslint-disable-next-line no-unused-vars
   const [messages, setMessages] = useState(
     users.map((user) => ({
       name: user,
-      initials: getInitial(user), // Generate initials for each user
+      initials: getInitial(user),
       isRead: Math.random() > 0.5,
       chatMessages: [
         {
@@ -41,7 +40,7 @@ const Messages = () => {
           content: "Here's the document you requested",
           isSent: false,
           timestamp: "12:55 PM",
-          files: [{ fileName: "Document.pdf", fileSize: "1.2 MB" }], // Example file
+          files: [{ fileName: "Document.pdf", fileSize: "1.2 MB" }],
         },
       ],
     }))
@@ -52,7 +51,7 @@ const Messages = () => {
   const [sentMessages, setSentMessages] = useState([]);
   const [allMessages, setAllMessages] = useState([]);
   const [fileList, setFileList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // State for search input
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleShowUnread = () => setShowUnread(true);
   const handleShowAll = () => setShowUnread(false);
@@ -60,6 +59,12 @@ const Messages = () => {
   const handleUserClick = (user) => {
     setSelectedUser(user);
     setFileList([]);
+    // Mark message as read when clicked
+    setMessages((prevMessages) =>
+      prevMessages.map((message) =>
+        message.name === user.name ? { ...message, isRead: true } : message
+      )
+    );
   };
 
   const handleSendMessage = (inputMessage) => {
@@ -72,37 +77,37 @@ const Messages = () => {
   };
 
   const handleSendFile = (file) => {
-    setFileList([...fileList, file]); // Append the selected file to the fileList array
+    setFileList([...fileList, file]);
   };
 
   const filteredMessages = messages
-    .filter(
-      (message) => (showUnread ? !message.isRead : true) // Filter unread if showUnread is true
-    )
-    .filter(
-      (message) => message.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by search term
+    .filter((message) => (showUnread ? !message.isRead : true))
+    .filter((message) =>
+      message.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-  // Handle back button click to go back to message list on mobile/tablet
   const handleBackClick = () => {
     setSelectedUser(null);
   };
 
   return (
     <div className="flex md:flex-row h-full p-2">
-      {/* Back Arrow only shown on mobile/tablet if a user is selected */}
       {selectedUser && (
         <div className="block md:hidden p-2">
-          <button
-            className="relative text-[969CA6]"
-            onClick={handleBackClick}
-          >
+          <button className="relative text-[969CA6]" onClick={handleBackClick}>
             <IoMdArrowBack className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" />
           </button>
         </div>
       )}
 
-      <div className={`w-full md:w-1/3 md:border-r-2 border-[#EEEFF2] pl-2 ${selectedUser ? "hidden md:block" : "block"}`}>
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`w-full md:w-1/3 md:border-r-2 border-[#EEEFF2] pl-2 ${
+          selectedUser ? "hidden md:block" : "block"
+        }`}
+      >
         <h2 className="text-xl font-bold pb-2">Messages</h2>
         <SearchIcon handleSearch={setSearchTerm} />
         <div className="w-full text-[#969CA6] rounded-lg overflow-hidden flex mt-4">
@@ -123,9 +128,16 @@ const Messages = () => {
           messages={filteredMessages}
           onUserClick={handleUserClick}
         />
-      </div>
+      </motion.div>
 
-      <div className={`w-full md:w-2/3 md:flex flex-col ${!selectedUser ? "hidden" : "block"}`}>
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`w-full md:w-2/3 md:flex flex-col ${
+          !selectedUser ? "hidden" : "block"
+        }`}
+      >
         {selectedUser ? (
           <>
             <ChatHeader
@@ -135,7 +147,12 @@ const Messages = () => {
               setSentMessages={setSentMessages}
               setAllMessages={setAllMessages}
             />
-            <ChatMessages sentMessages={sentMessages} fileList={fileList} allMessages= {allMessages} setAllMessages={setAllMessages}/>
+            <ChatMessages
+              sentMessages={sentMessages}
+              fileList={fileList}
+              allMessages={allMessages}
+              setAllMessages={setAllMessages}
+            />
             <InputArea
               onSendMessage={handleSendMessage}
               onSendFile={handleSendFile}
@@ -148,7 +165,7 @@ const Messages = () => {
             </p>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
