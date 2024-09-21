@@ -60,7 +60,7 @@ function Dashboard() {
         <div className="min-w-[40%] border rounded-lg border-[#EEEFF2] p-4 animate-fade-in">
           <div className="flex justify-between">
             <p className="font-semibold mb-4 flex items-center gap-2">
-              <span>
+              <span className="animate-pulse">
                 <img src={schedule_logo} alt="schedule logo" />
               </span>
               Schedule

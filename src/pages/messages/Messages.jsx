@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { IoMdArrowBack } from "react-icons/io";
-import { motion } from "framer-motion";
 import MessageList from "../../components/messageComponent/MessageList";
 import ChatHeader from "../../components/messageComponent/ChatHeader";
 import ChatMessages from "../../components/messageComponent/ChatMessages";
@@ -18,16 +17,18 @@ const Messages = () => {
     "Big Cedar",
   ];
 
+  // Helper function to generate initials
   const getInitial = (name) => {
     const nameParts = name.split(" ");
-    const initial = nameParts[0][0];
+    const initial = nameParts[0][0]; // Get the first letter of the first name
     return initial.toUpperCase();
   };
 
+  // eslint-disable-next-line no-unused-vars
   const [messages, setMessages] = useState(
     users.map((user) => ({
       name: user,
-      initials: getInitial(user),
+      initials: getInitial(user), // Generate initials for each user
       isRead: Math.random() > 0.5,
       chatMessages: [
         {
@@ -40,7 +41,7 @@ const Messages = () => {
           content: "Here's the document you requested",
           isSent: false,
           timestamp: "12:55 PM",
-          files: [{ fileName: "Document.pdf", fileSize: "1.2 MB" }],
+          files: [{ fileName: "Document.pdf", fileSize: "1.2 MB" }], // Example file
         },
       ],
     }))
@@ -51,7 +52,7 @@ const Messages = () => {
   const [sentMessages, setSentMessages] = useState([]);
   const [allMessages, setAllMessages] = useState([]);
   const [fileList, setFileList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
 
   const handleShowUnread = () => setShowUnread(true);
   const handleShowAll = () => setShowUnread(false);
@@ -59,12 +60,6 @@ const Messages = () => {
   const handleUserClick = (user) => {
     setSelectedUser(user);
     setFileList([]);
-    // Mark message as read when clicked
-    setMessages((prevMessages) =>
-      prevMessages.map((message) =>
-        message.name === user.name ? { ...message, isRead: true } : message
-      )
-    );
   };
 
   const handleSendMessage = (inputMessage) => {
@@ -77,21 +72,25 @@ const Messages = () => {
   };
 
   const handleSendFile = (file) => {
-    setFileList([...fileList, file]);
+    setFileList([...fileList, file]); // Append the selected file to the fileList array
   };
 
   const filteredMessages = messages
-    .filter((message) => (showUnread ? !message.isRead : true))
-    .filter((message) =>
-      message.name.toLowerCase().includes(searchTerm.toLowerCase())
+    .filter(
+      (message) => (showUnread ? !message.isRead : true) // Filter unread if showUnread is true
+    )
+    .filter(
+      (message) => message.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by search term
     );
 
+  // Handle back button click to go back to message list on mobile/tablet
   const handleBackClick = () => {
     setSelectedUser(null);
   };
 
   return (
     <div className="flex md:flex-row h-full p-2">
+      {/* Back Arrow only shown on mobile/tablet if a user is selected */}
       {selectedUser && (
         <div className="block md:hidden p-2">
           <button className="relative text-[969CA6]" onClick={handleBackClick}>
@@ -100,10 +99,7 @@ const Messages = () => {
         </div>
       )}
 
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
         className={`w-full md:w-1/3 md:border-r-2 border-[#EEEFF2] pl-2 ${
           selectedUser ? "hidden md:block" : "block"
         }`}
@@ -128,12 +124,9 @@ const Messages = () => {
           messages={filteredMessages}
           onUserClick={handleUserClick}
         />
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
         className={`w-full md:w-2/3 md:flex flex-col ${
           !selectedUser ? "hidden" : "block"
         }`}
@@ -165,7 +158,7 @@ const Messages = () => {
             </p>
           </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };
