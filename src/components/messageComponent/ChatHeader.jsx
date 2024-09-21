@@ -6,8 +6,9 @@ const ChatHeader = ({
   messages,
   setFileList,
   setSentMessages,
+  setAllMessages
 }) => {
-  // Handling File Click
+  // handling File Click
   const handleFileClick = () => {
     if (selectedUser) {
       const userMessages = messages.find(
@@ -27,10 +28,11 @@ const ChatHeader = ({
     // setSelectedUser(null); // Clear selected user
     setFileList([]); // Clear file list
     setSentMessages([]); // Clear sent messages
+    setAllMessages([]); // Clear all messages
   };
 
   return (
-    <div className="sticky top-0 py-[18px] px-[5px] md:px-[14px] border-b flex items-center justify-between bg-white z-10 border-0">
+    <div className="py-[18px] px-[5px] md:px-[14px] border-b flex items-center justify-between bg-white">
       <div className="flex items-center space-x-2">
         <div className="px-4 py-2 bg-[#4CAF50] rounded-full text-white">
           {selectedUser.initials}

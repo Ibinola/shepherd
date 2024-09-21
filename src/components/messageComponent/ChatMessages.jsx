@@ -1,6 +1,7 @@
 import React from "react";
+import { useEffect } from "react";
 
-const ChatMessages = ({ sentMessages, fileList }) => {
+const ChatMessages = ({ sentMessages, fileList, allMessages, setAllMessages }) => {
   // Dummy sent messages
   const dummySentMessages = [
     { text: "Hey, how's it going?", time: "10:30 AM", type: "sent" },
@@ -93,11 +94,16 @@ const ChatMessages = ({ sentMessages, fileList }) => {
   const allDummyMessages = [...dummySentMessages, ...dummyReceivedMessages];
 
   // Shuffle all messages based on timestamps to mix sent and received
-  const allMessages = [...allDummyMessages, ...sentMessages].sort((a, b) => {
+  const combinedMessages = [...allDummyMessages, ...sentMessages].sort((a, b) => {
     const timeA = new Date(`1970-01-01T${a.time.split(" ")[0]}:00`).getTime();
     const timeB = new Date(`1970-01-01T${b.time.split(" ")[0]}:00`).getTime();
     return timeA - timeB;
   });
+
+  // Use useEffect to update allMessages in the parent
+  useEffect(() => {
+    setAllMessages(combinedMessages); // Update the parent's allMessages state
+  }, [setAllMessages, combinedMessages]); 
 
   return (
     <div className="flex-1 p-4 space-y-4 overflow-y-auto bg-gray-50 min-h-[82%] md:max-h-full scrollbar-custom">
