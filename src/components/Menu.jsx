@@ -1,10 +1,11 @@
 import React, { useReducer } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Contract from "../assets/svgs/Contract.svg";
 import Delete from "../assets/svgs/Delete.svg";
 import Review from "../assets/svgs/Review.svg";
 import Modal from "../components/Modal";
 import ReviewModal from "../components/ReviewModal";
-import DeleteModal from "../components/DeleteModal"; // Import DeleteModal
+import DeleteModal from "../components/DeleteModal";
 
 // Define action types
 const actionTypes = {
@@ -15,7 +16,7 @@ const actionTypes = {
 // Initial state
 const initialState = {
   showModal: false,
-  showReviewModl: false,
+  showReviewModal: false,
   showDeleteModal: false,
 };
 
@@ -33,6 +34,7 @@ const reducer = (state, action) => {
 
 const Menu = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const openModal = (modal) => {
     dispatch({ type: actionTypes.OPEN_MODAL, modal });
@@ -46,7 +48,10 @@ const Menu = () => {
     <div className="relative">
       <div className="absolute top-8 right-0 bg-white shadow-md border rounded-lg z-10 w-[190px] h-[210px] py-2 px-1 duration-100 ease-in-out">
         <ul className="list p-2">
-          <li className="py-1 px-2 hover:bg-gray-100 cursor-pointer font-semibold">
+          <li
+            className="py-1 px-2 hover:bg-gray-100 cursor-pointer font-semibold"
+            onClick={() => navigate("/offers")} // Navigate to ./offer
+          >
             <span className="flex items-center">
               <img src={Contract} alt="" />
               Contract
@@ -62,7 +67,7 @@ const Menu = () => {
             </span>
           </li>
           <li
-            className="py-1 px-2  hover:bg-gray-100 cursor-pointer whitespace-nowrap font-semibold"
+            className="py-1 px-2 hover:bg-gray-100 cursor-pointer whitespace-nowrap font-semibold"
             onClick={() => openModal("showReviewModal")}
           >
             <span className="flex items-center">
@@ -89,7 +94,7 @@ const Menu = () => {
           setShowReviewModal={() => closeModal("showReviewModal")}
         />
         <DeleteModal
-          showDeleteModal={state.showDeleteModal} // Corrected state key
+          showDeleteModal={state.showDeleteModal}
           setShowDeleteModal={() => closeModal("showDeleteModal")}
         />
       </div>
