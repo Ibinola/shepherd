@@ -32,7 +32,7 @@ const AboutMeCard = () => {
         <div className="flex justify-between items-center">
           <p className="text-gray-700">{aboutMe}</p>
           <span
-            className="ml-2 text-gray-500 cursor-pointer"
+            className="ml-2 text-blue-500 cursor-pointer"
             onClick={() => setIsEditingAbout(true)}
           >
             <FaPen />

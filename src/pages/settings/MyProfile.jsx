@@ -75,7 +75,7 @@ const ProfileCard = () => {
 const VideoCard = () => {
   const [isEditingVideo, setIsEditingVideo] = useState(false);
   const [videoCover, setVideoCover] = useState("https://via.placeholder.com/150");
-  const [videoFile, setVideoFile] = useState(null);
+  const [setVideoFile] = useState(null);
 
   const handleVideoUpload = (e) => {
     const file = e.target.files[0];
@@ -109,35 +109,34 @@ const VideoCard = () => {
               onChange={handleVideoUpload}
               className="mb-2"
             />
-            <a
+            <button
               href="#"
               onClick={() => setIsEditingVideo(false)}
               className="text-blue-500 underline"
             >
               Save Video
-            </a>
+            </button>
           </div>
         ) : (
-          <a
+          <button
             href="#"
             onClick={() => setIsEditingVideo(true)}
             className="text-blue-500 underline mt-2"
           >
             Update Intro Video
-          </a>
+          </button>
         )}
       </div>
     </div>
   );
 };
 
- {/* About Me Section */}
 
 
 // Qualifications Component
 const Qualifications = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [qualifications, setQualifications] = useState([
+  const [qualifications] = useState([
     {
       institution: "Indian Institute of Management (IIM), Bangalore",
       degree: "Master of Business Administration (MBA), Information System",
@@ -155,7 +154,7 @@ const Qualifications = () => {
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold">Qualifications</h3>
         <span
-          className="text-gray-500 cursor-pointer"
+          className="text-blue-500 cursor-pointer"
           onClick={() => setIsEditing(!isEditing)}
         >
           <FaPen />
@@ -214,7 +213,7 @@ const Availability = () => {
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold">Availability</h3>
         <span
-          className="text-gray-500 cursor-pointer"
+          className="text-blue-500 cursor-pointer"
           onClick={() => setIsEditing(!isEditing)}
         >
           <FaPen />
