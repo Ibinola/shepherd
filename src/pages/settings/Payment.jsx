@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaPen } from "react-icons/fa";
 
 const Payment = () => {
   // State to manage edit mode
@@ -33,7 +34,7 @@ const Payment = () => {
 
   return (
     <div>
-      {/* <h2 className="text-2xl font-bold mb-6">Account settings</h2> */}
+      <h2 className="text-2xl font-bold mb-6">Payment</h2>
 
       {/* Payment Section */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-6">
@@ -59,7 +60,7 @@ const Payment = () => {
             className="text-sm text-blue-500"
             onClick={() => toggleEdit("accountName")}
           >
-            {isEditing.accountName ? "Save" : "Change"}
+            {isEditing.accountName ? "Save" : <FaPen />}
           </button>
         </div>
 
@@ -83,7 +84,7 @@ const Payment = () => {
             className="text-sm text-blue-500"
             onClick={() => toggleEdit("accountNumber")}
           >
-            {isEditing.accountNumber ? "Save" : "Change"}
+            {isEditing.accountNumber ? "Save" : <FaPen />}
           </button>
         </div>
 
@@ -107,7 +108,7 @@ const Payment = () => {
             className="text-sm text-blue-500"
             onClick={() => toggleEdit("bankName")}
           >
-            {isEditing.bankName ? "Save" : "Change"}
+            {isEditing.bankName ? "Save" : <FaPen />}
           </button>
         </div>
       </div>

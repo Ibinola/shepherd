@@ -1,31 +1,22 @@
-import React, { useState, useRef, useEffect } from "react";
-import Profile from "./MyProfile";
-import Security from "./Security";
-import Payment from "./Payment";
+import React, { useState } from 'react';
+import Profile from './MyProfile';
+import Security from './Security';
+
+// import Notifications from './Notifications';
+import Payment from './Payment';
 
 const Settings = () => {
-  const [activeSection, setActiveSection] = useState("profile");
-  const contentRef = useRef(null);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.classList.add("fade-out");
-      const timer = setTimeout(() => {
-        contentRef.current.classList.remove("fade-out");
-        contentRef.current.classList.add("fade-in");
-      }, 100); // Delay the fade-in to allow the fade-out to complete
-
-      return () => clearTimeout(timer);
-    }
-  }, [activeSection]);
+  const [activeSection, setActiveSection] = useState('profile');
 
   const renderSection = () => {
     switch (activeSection) {
-      case "profile":
+      case 'profile':
         return <Profile />;
-      case "security":
+      case 'security':
         return <Security />;
-      case "payment":
+      // case 'notifications':
+      //   return <Notifications />;
+      case 'payment':
         return <Payment />;
       default:
         return <Profile />;
@@ -33,47 +24,44 @@ const Settings = () => {
   };
 
   return (
-    <div className="flex w-full h-full">
+    <div className="flex flex-col min-w-full  md:flex-row w-full h-screen overflow-auto">
       {/* Sidebar Menu */}
-      <aside className="w-1/4 bg-gray-100 p-6 border-r border-gray-300 ovr">
-        <ul>
+      <aside className="w-min-full md:w-1/4 m-6 p-6 border rounded-lg border-gray-300 overflow-none">
+        <ul className='flex flex-wrap justify-between md:flex-col '>
           <li
-            className={`p-3 mb-2 cursor-pointer rounded transform transition-transform duration-300 ease-in-out ${
-              activeSection === "profile"
-                ? "bg-blue-500 text-white scale-105"
-                : "hover:bg-blue-100 hover:scale-105"
+            className={`p-3 mb-2 cursor-pointer rounded ${
+              activeSection === 'profile' ? "flex items-center space-x-3 text-[#207DF7] bg-[#F0F6FE] p-2 rounded-md"
+                : "flex items-center space-x-3 text-[#6E7682] p-2 hover:bg-[#F0F6FE] rounded-md"
             }`}
-            onClick={() => setActiveSection("profile")}
+            onClick={() => setActiveSection('profile')}
           >
             My Profile
           </li>
           <li
-            className={`p-3 mb-2 cursor-pointer rounded transform transition-transform duration-300 ease-in-out ${
-              activeSection === "security"
-                ? "bg-blue-500 text-white scale-105"
-                : "hover:bg-blue-100 hover:scale-105"
+            className={`p-3 mb-2 cursor-pointer rounded ${
+              activeSection === 'security' ? "flex items-center space-x-3 text-[#207DF7] bg-[#F0F6FE] p-2 rounded-md"
+                : "flex items-center space-x-3 text-[#6E7682] p-2 hover:bg-[#F0F6FE] rounded-md"
             }`}
-            onClick={() => setActiveSection("security")}
+            onClick={() => setActiveSection('security')}
           >
             Security
           </li>
           <li
-            className={`p-3 mb-2 cursor-pointer rounded transform transition-transform duration-300 ease-in-out ${
-              activeSection === "notifications"
-                ? "bg-blue-500 text-white scale-105"
-                : "hover:bg-blue-100 hover:scale-105"
-            }`}
-            onClick={() => setActiveSection("notifications")}
+           className={`p-3 mb-2 cursor-pointer rounded ${
+            activeSection === 'notifications' ? "flex items-center space-x-3 text-[#207DF7] bg-[#F0F6FE] p-2 rounded-md"
+                : "flex items-center space-x-3 text-[#6E7682] p-2 hover:bg-[#F0F6FE] rounded-md"
+          }`}
+          
+            onClick={() => setActiveSection('notifications')}
           >
             Notifications
           </li>
           <li
-            className={`p-3 mb-2 cursor-pointer rounded transform transition-transform duration-300 ease-in-out ${
-              activeSection === "payment"
-                ? "bg-blue-500 text-white scale-105"
-                : "hover:bg-blue-100 hover:scale-105"
+            className={`p-3 mb-2 cursor-pointer rounded ${
+              activeSection === 'payment' ? "flex items-center space-x-3 text-[#207DF7] bg-[#F0F6FE] p-2 rounded-md"
+                : "flex items-center space-x-3 text-[#6E7682] p-2 hover:bg-[#F0F6FE] rounded-md"
             }`}
-            onClick={() => setActiveSection("payment")}
+            onClick={() => setActiveSection('payment')}
           >
             Payment
           </li>
@@ -81,10 +69,8 @@ const Settings = () => {
       </aside>
 
       {/* Content Area */}
-      <main className="flex-1 p-6 overflow-y-auto">
-        <div ref={contentRef} className="content-container">
-          {renderSection()}
-        </div>
+      <main className="flex-1 p-6 overflow-y-auto ">
+        {renderSection()}
       </main>
     </div>
   );

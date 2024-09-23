@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import DeleteModal from "../../components/DeleteModal";
 import LogoutModal from "../../components/LogoutModal";
+import { FaPen } from "react-icons/fa";
 
 const initialState = {
   isEditing: {
@@ -120,11 +121,13 @@ const Security = () => {
   // };
 
   return (
+    <>
+    <h2 className="text-2xl font-bold mb-6">Security</h2>
     <div className="transition-opacity duration-500 ease-in-out">
       {state.showModal.logout && (
         <LogoutModal
-          showLogoutModal={state.showModal.logout}
-          setShowLogoutModal={() => hideModal("logout")}
+        showLogoutModal={state.showModal.logout}
+        setShowLogoutModal={() => hideModal("logout")}
         />
       )}
       {state.showModal.deleteAccount && (
@@ -148,7 +151,7 @@ const Security = () => {
                 value={state.accountInfo.email}
                 onChange={handleChange}
                 className="border border-gray-300 rounded px-2 py-1 text-sm focus:border-[#207df7] focus:outline-none transition-all duration-300"
-              />
+                />
             ) : (
               <p className="text-sm">{state.accountInfo.email}</p>
             )}
@@ -156,8 +159,8 @@ const Security = () => {
           <button
             className="text-sm text-[#207df7] hover:text-blue-600 transition-all duration-300"
             onClick={() => toggleEdit("email")}
-          >
-            {state.isEditing.email ? "Save" : "Change"}
+            >
+            {state.isEditing.email ? "Save" : <FaPen />}
           </button>
         </div>
 
@@ -181,7 +184,7 @@ const Security = () => {
             className="text-sm text-[#207df7] hover:text-blue-600 transition-all duration-300"
             onClick={() => toggleEdit("password")}
           >
-            {state.isEditing.password ? "Save" : "Change"}
+            {state.isEditing.password ? "Save" : <FaPen />}
           </button>
         </div>
 
@@ -190,7 +193,7 @@ const Security = () => {
           <button
             className="text-sm text-red-500 font-medium hover:underline transition-transform transform hover:scale-105 duration-300"
             onClick={handleLogout}
-          >
+            >
             Log out of all devices
           </button>
           <p className="text-xs text-gray-500">
@@ -233,7 +236,7 @@ const Security = () => {
           <button
             className="text-sm text-red-500 font-medium hover:underline transition-transform transform hover:scale-105 duration-300"
             onClick={handleDeleteAccount}
-          >
+            >
             Delete my account
           </button>
           <p className="text-xs text-gray-500">
@@ -242,6 +245,7 @@ const Security = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
