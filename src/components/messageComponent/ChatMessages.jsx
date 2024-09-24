@@ -5,37 +5,17 @@ const ChatMessages = ({ sentMessages, fileList, allMessages, setAllMessages }) =
   // Dummy sent messages
   const dummySentMessages = [
     { text: "Hey, how's it going?", time: "10:30 AM", type: "sent" },
-    {
-      text: "I wanted to ask about the project deadline.",
-      time: "10:32 AM",
-      type: "sent",
-    },
+
     { text: "Can you send me the files?", time: "10:35 AM", type: "sent" },
-    {
-      text: "Also, have you checked the latest report?",
-      time: "10:40 AM",
-      type: "sent",
-    },
-    {
-      text: "Let me know if there's anything else needed.",
-      time: "10:45 AM",
-      type: "sent",
-    },
-    {
-      text: "I will send you the updated version shortly.",
-      time: "10:50 AM",
-      type: "sent",
-    },
+   
+   
+   
     {
       text: "Do you need any help with the tasks?",
       time: "10:55 AM",
       type: "sent",
     },
-    {
-      text: "Don't forget about the meeting at 2 PM.",
-      time: "11:00 AM",
-      type: "sent",
-    },
+
     {
       text: "The design draft is almost complete.",
       time: "11:05 AM",
@@ -51,22 +31,14 @@ const ChatMessages = ({ sentMessages, fileList, allMessages, setAllMessages }) =
   // Dummy received messages
   const dummyReceivedMessages = [
     { text: "I'm doing well, thanks!", time: "10:31 AM", type: "received" },
-    {
-      text: "The deadline is tomorrow at noon.",
-      time: "10:33 AM",
-      type: "received",
-    },
+    
     {
       text: "Sure, I will send them right away.",
       time: "10:37 AM",
       type: "received",
     },
     { text: "Do you need anything else?", time: "10:38 AM", type: "received" },
-    {
-      text: "Let me know if you need help.",
-      time: "10:40 AM",
-      type: "received",
-    },
+    
     {
       text: "I’m almost done with my part.",
       time: "10:42 AM",
@@ -77,11 +49,7 @@ const ChatMessages = ({ sentMessages, fileList, allMessages, setAllMessages }) =
       time: "10:43 AM",
       type: "received",
     },
-    {
-      text: "I’ll follow up with you later.",
-      time: "10:45 AM",
-      type: "received",
-    },
+
     {
       text: "Here are the files you asked for.",
       time: "10:46 AM",

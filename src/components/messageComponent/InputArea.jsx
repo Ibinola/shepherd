@@ -22,7 +22,7 @@ const InputArea = ({ onSendMessage, onSendFile }) => {
   };
 
   return (
-    <div className="p-4 border-t flex items-center space-x-4 bg-white transition-all duration-300 ease-in-out sticky bottom-0">
+    <div className="px-1 md:px-4 py-4 border-t flex items-center space-x-4 bg-white transition-all duration-300 ease-in-out sticky bottom-0">
       <div className="relative flex-1">
         <input
           type="text"
@@ -31,7 +31,7 @@ const InputArea = ({ onSendMessage, onSendFile }) => {
           placeholder="Type a message"
           className="w-full border rounded-lg p-2 pr-14 focus:border-[#207DF7] focus:shadow-lg transition-all duration-300 outline-none bg-transparent"
         />
-        <div className="absolute inset-y-0 right-2 flex items-center space-x-2">
+        <div className="absolute inset-y-0 right-2 flex items-center md:gap-4">
           <img
             src={imgSvg}
             alt="image-upload"
