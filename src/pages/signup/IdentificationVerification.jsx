@@ -12,7 +12,7 @@ function IdentificationVerification({
       {" "}
       <div className="text-center">
         <OnboardingHeader text="Upload a proof of your identity (drivers license, passport, national ID)" />
-        <div className="space-y-6 w-96 flex flex-col text-left mx-auto justify-center mt-8">
+        <div className="space-y-6 flex flex-col text-left mx-auto justify-center mt-8">
           {/* Country Selectors */}
           <div className="space-y-4">
             <SelectField

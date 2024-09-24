@@ -9,7 +9,7 @@ import SignUp from "./pages/signup/SignUp";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    index: true,
     element: <SignUp />,
   },
   {
@@ -40,7 +40,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-console.log(router.routes)
 function App() {
   return <RouterProvider router={router} />;
 }

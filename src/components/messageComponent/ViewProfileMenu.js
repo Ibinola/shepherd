@@ -86,7 +86,7 @@ const ViewProfileMenu = ({ handleFileClick, handleDeleteChat, userName }) => {
           ref={menuRef}
           className="showMenu absolute right-0 top-10 mt-2 bg-white border rounded-lg shadow-lg p-2 z-10"
         >
-          <ul>
+          <ul className="w-max">
             <li className="hover:bg-gray-100 cursor-pointer p-2 flex gap-1 justify-between items-center">
               <div className="flex items-center" onClick={handleFileClick}>
                 <img src={fileSvg} alt="file-icon" />

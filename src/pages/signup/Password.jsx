@@ -6,7 +6,7 @@ function Password({ formData, handleChange }) {
   return (
     <div className="text-center">
       <OnboardingHeader text="Hi there, before you proceed, let us know who is signing up" />
-      <div className="space-y-2 w-96 flex flex-col text-left mx-auto justify-center mt-4">
+      <div className="space-y-2 flex flex-col text-left mx-auto justify-center mt-4">
         <InputField
           id="password"
           name="password"
